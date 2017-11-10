@@ -1,0 +1,36 @@
+{
+    "author": "Beining <i@cnbeining.com>",
+    "description": "使用Keras、Python、Theano和TensorFlow开发深度学习模型",
+    "extension": null,
+    "generator": "site",
+    "isbn": "",
+    "links": {
+        "sharing": {
+            "all": null,
+            "facebook": null,
+            "google": null,
+            "twitter": null,
+            "weibo": null
+        },
+        "sidebar": {
+            "Beining's Blog": "https://www.cnbeining.com/"
+        }
+    },
+    "output": null,
+    "pdf": {
+        "fontSize": 12,
+        "footerTemplate": null,
+        "headerTemplate": null,
+        "margin": {
+            "bottom": 36,
+            "left": 62,
+            "right": 62,
+            "top": 36
+        },
+        "pageNumbers": false,
+        "paperSize": "a4"
+    },
+    "plugins": [],
+    "title": "深度学习：Python教程",
+    "variables": {}
+}
