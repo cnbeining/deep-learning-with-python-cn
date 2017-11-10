@@ -72,7 +72,7 @@ Using Theano backend.
 theano
 ```
 
-```KERAS_BACKEND```这个变量可以控制Keras的后端，例如：
+变量```KERAS_BACKEND```可以控制Keras的后端，例如：
 
 ```
 KERAS_BACKEND=tensorflow python -c "from keras import backend; print backend._BACKEND"
