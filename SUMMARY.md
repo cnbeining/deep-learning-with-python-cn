@@ -11,3 +11,6 @@
     * [第5章 项目：在云上搭建机器学习环境](2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.md)
 * [III 多层感知器](3-multi-layer-perceptrons/part3.md)
     * [第6章 多层感知器入门](3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.md)
+    * [第7章 使用Keras开发神经网络](3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.md)
+    * [第8章 测试神经网络](3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.md)
+    * [第9章 使用Scikit-Learn调用Keras的模型](3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md)
