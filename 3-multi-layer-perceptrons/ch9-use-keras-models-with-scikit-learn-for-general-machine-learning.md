@@ -75,13 +75,13 @@ Epoch 150/150
 
 比起手工测试，使用scikit-learn容易的多。
 
-#### 9.2 使用网格搜索调整深度学习模型的参数
+#### 9.3 使用网格搜索调整深度学习模型的参数
 
 使用scikit-learn封装Keras的模型十分简单。进一步想：我们可以给```fit()```方法传入参数，```KerasClassifier```的```build_fn```方法也可以传入参数。可以利用这点进一步调整模型。
 
-我们用网格搜索测试不同参数的性能：```create_model()```函数可以传入```optimizer```和```init```参数，虽然都有默认值。那么我们可以用不同的优化方法和初始权重调整网络。具体说，我们希望搜索：
+我们用网格搜索测试不同参数的性能：```create_model()```函数可以传入```optimizer```和```init```参数，虽然都有默认值。那么我们可以用不同的优化算法和初始权重调整网络。具体说，我们希望搜索：
 
-- 优化方法：搜索权重的方法
+- 优化算法：搜索权重的方法
 - 初始权重：初始化不同的网络
 - 训练次数：对模型训练的次数
 - 批次大小：每次训练的数据量
@@ -128,7 +128,7 @@ for params, mean_score, scores in grid_result.grid_scores_:
     print("%f (%f) with: %r" % (scores.mean(), scores.std(), params))
 ```
 
-用CPU差不多要5分钟，结果如下。我们发现使用均匀分布初始化，```rmsprop```优化器，150轮，步长为5时效果最好，正确率约75%：
+用CPU差不多要5分钟，结果如下。我们发现使用均匀分布初始化，```rmsprop```优化算法，150轮，批尺寸为5时效果最好，正确率约75%：
 
 ```
 Best: 0.751302 using {'init': 'uniform', 'optimizer': 'rmsprop', 'nb_epoch': 150, 'batch_size': 5}
@@ -162,8 +162,7 @@ Best: 0.751302 using {'init': 'uniform', 'optimizer': 'rmsprop', 'nb_epoch': 150
 
 使用scikit-learn调整参数比手工调用Keras简便的多。
 
-#### 9.4.1 下一章
+##### 9.4.1 下一章
 
 现在你已经知道如何如何在scikit-learn调用Keras模型：可以开工了。接下来几章我们会用Keras创造不同的端到端模型，从多类分类问题开始。
-
 

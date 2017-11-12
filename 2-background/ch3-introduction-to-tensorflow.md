@@ -1,6 +1,6 @@
 ### 第3章 TensorFlow入门
 
-TensorFlow是Google创造的数值运算Python库，作为深度学习的底层使用。本章包括：
+TensorFlow是Google创造的数值运算库，作为深度学习的底层使用。本章包括：
 
 - TensorFlow介绍
 - 如何用TensorFlow定义、编译并运算表达式

@@ -2,6 +2,7 @@
 
 * [封面](README.md)
 * [前言](Preface.md)
+* [译者的话](Preface-translator.md)
 * [I 简介](1-introduction/part1.md)
     * [第1章 深度学习入门](1-introduction/ch1-welcome.md)
 * [II 背景](2-background/part2.md)
@@ -14,3 +15,7 @@
     * [第7章 使用Keras开发神经网络](3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.md)
     * [第8章 测试神经网络](3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.md)
     * [第9章 使用Scikit-Learn调用Keras的模型](3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md)
+    * [第10章 项目：多类花朵分类](3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md)
+    * [第11章 项目：声呐返回值分类](3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.md)
+    * [第12章 项目：波士顿住房价格回归](3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.md)
+* [IV Keras与高级多层感知器](4-advanced-multi-layer-perceptrons-and-keras/part4.md)
