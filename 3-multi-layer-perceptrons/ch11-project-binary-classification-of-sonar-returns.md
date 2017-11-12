@@ -79,7 +79,8 @@ def create_baseline():
 
 用scikit-learn测试一下模型。向```KerasClassifier```传入训练次数（默认值），关闭日志：
 
-```# evaluate model with standardized dataset
+```
+# evaluate model with standardized dataset
 estimator = KerasClassifier(build_fn=create_baseline, nb_epoch=100, batch_size=5, verbose=0)
 kfold = StratifiedKFold(y=encoded_Y, n_folds=10, shuffle=True, random_state=seed)
 results = cross_val_score(estimator, X, encoded_Y, cv=kfold)
@@ -206,5 +207,3 @@ Larger: 86.47% (3.82%)
 ##### 11.5.1 下一章
 
 多分类和二分类介绍完了：下一章是回归问题。
-
-
