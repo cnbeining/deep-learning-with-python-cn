@@ -13,7 +13,9 @@
             "weibo": null
         },
         "sidebar": {
-            "Beining's Blog": "https://www.cnbeining.com/"
+            "Beining's Blog": "https://www.cnbeining.com/",
+            "Github": "https://github.com/cnbeining/deep-learning-with-python-cn",
+            "讨论区": "https://github.com/cnbeining/deep-learning-with-python-cn/issues"
         }
     },
     "output": null,
