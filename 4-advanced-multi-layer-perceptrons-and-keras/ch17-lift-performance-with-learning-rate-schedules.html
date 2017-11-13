@@ -1,0 +1,763 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第17章 学习速度设计 · 深度学习：Python教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Beining <i@cnbeining.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../5-convolutional-neural-networks/part5.html" />
+    
+    
+    <link rel="prev" href="ch16-reduce-overfitting-with-dropout-regularization.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.cnbeining.com/" target="_blank" class="custom-link">Beining's Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/cnbeining/deep-learning-with-python-cn" target="_blank" class="custom-link">Github</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/cnbeining/deep-learning-with-python-cn/issues" target="_blank" class="custom-link">讨论区</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    封面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Preface.html">
+            
+                <a href="../Preface.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Preface-translator.html">
+            
+                <a href="../Preface-translator.html">
+            
+                    
+                    译者的话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../1-introduction/part1.html">
+            
+                <a href="../1-introduction/part1.html">
+            
+                    
+                    I 简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../1-introduction/ch1-welcome.html">
+            
+                <a href="../1-introduction/ch1-welcome.html">
+            
+                    
+                    第1章 深度学习入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../2-background/part2.html">
+            
+                <a href="../2-background/part2.html">
+            
+                    
+                    II 背景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../2-background/ch2-introduction-to-theano.html">
+            
+                <a href="../2-background/ch2-introduction-to-theano.html">
+            
+                    
+                    第2章 Theano入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../2-background/ch3-introduction-to-tensorflow.html">
+            
+                <a href="../2-background/ch3-introduction-to-tensorflow.html">
+            
+                    
+                    第3章 TensorFlow入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../2-background/ch4-introduction-to-keras.html">
+            
+                <a href="../2-background/ch4-introduction-to-keras.html">
+            
+                    
+                    第4章 Keras入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.html">
+            
+                <a href="../2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.html">
+            
+                    
+                    第5章 项目：在云上搭建机器学习环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../3-multi-layer-perceptrons/part3.html">
+            
+                <a href="../3-multi-layer-perceptrons/part3.html">
+            
+                    
+                    III 多层感知器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.html">
+            
+                    
+                    第6章 多层感知器入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.html">
+            
+                    
+                    第7章 使用Keras开发神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.html">
+            
+                    
+                    第8章 测试神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.html">
+            
+                    
+                    第9章 使用Scikit-Learn调用Keras的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.html">
+            
+                    
+                    第10章 项目：多类花朵分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.html">
+            
+                    
+                    第11章 项目：声呐返回值分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.html">
+            
+                    
+                    第12章 项目：波士顿住房价格回归
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="part4.html">
+            
+                <a href="part4.html">
+            
+                    
+                    IV Keras与高级多层感知器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="ch13-save-your-models-for-later-with-serialization.html">
+            
+                <a href="ch13-save-your-models-for-later-with-serialization.html">
+            
+                    
+                    第13章 用序列化保存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                <a href="ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                    
+                    第14章 使用保存点保存最好的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                <a href="ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                    
+                    第15章 模型训练效果可视化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                <a href="ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                    
+                    第16章 使用Dropout正则化防止过拟合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.5" data-path="ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                <a href="ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                    
+                    第17章 学习速度设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../5-convolutional-neural-networks/part5.html">
+            
+                <a href="../5-convolutional-neural-networks/part5.html">
+            
+                    
+                    V 卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第17章 学习速度设计</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x7B2C;17&#x7AE0;-&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8BBE;&#x8BA1;">&#x7B2C;17&#x7AE0; &#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8BBE;&#x8BA1;</h3>
+<p>&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x8BAD;&#x7EC3;&#x662F;&#x5F88;&#x56F0;&#x96BE;&#x7684;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x3002;&#x4F20;&#x7EDF;&#x7684;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7B97;&#x6CD5;&#x914D;&#x5408;&#x8BBE;&#x8BA1;&#x597D;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x6709;&#x65F6;&#x6548;&#x679C;&#x66F4;&#x597D;&#x3002;&#x672C;&#x7AE0;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x8C03;&#x6574;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x7684;&#x7684;&#x539F;&#x56E0;</li>
+<li>&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x6309;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;</li>
+<li>&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x6309;&#x8BAD;&#x7EC3;&#x6B21;&#x6570;&#x53D8;&#x5316;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x5427;&#x3002;</p>
+<h4 id="171-&#x5B66;&#x4E60;&#x901F;&#x5EA6;">17.1 &#x5B66;&#x4E60;&#x901F;&#x5EA6;</h4>
+<p>&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7B97;&#x6CD5;&#x914D;&#x5408;&#x8BBE;&#x8BA1;&#x597D;&#x7684;&#x901F;&#x5EA6;&#x53EF;&#x4EE5;&#x589E;&#x5F3A;&#x6548;&#x679C;&#xFF0C;&#x51CF;&#x5C11;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#xFF1A;&#x4E5F;&#x53EB;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x9000;&#x706B;&#x6216;&#x53EF;&#x53D8;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x3002;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6162;&#x6162;&#x8C03;&#x6574;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#xFF0C;&#x800C;&#x4F20;&#x7EDF;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x4E0D;&#x53D8;&#x3002;</p>
+<p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x8C03;&#x6574;&#x65B9;&#x6CD5;&#x662F;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x968F;&#x65F6;&#x95F4;&#x4E0B;&#x964D;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x505A;&#x5927;&#x7684;&#x8C03;&#x6574;&#x52A0;&#x901F;&#x8BAD;&#x7EC3;&#xFF0C;&#x540E;&#x9762;&#x6162;&#x6162;&#x5FAE;&#x8C03;&#x6027;&#x80FD;&#x3002;&#x4E24;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x6839;&#x636E;&#x8BAD;&#x7EC3;&#x8F6E;&#x6570;&#x6162;&#x6162;&#x4E0B;&#x964D;</li>
+<li>&#x5230;&#x67D0;&#x4E2A;&#x70B9;&#x4E0B;&#x964D;&#x5230;&#x67D0;&#x4E2A;&#x503C;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5206;&#x522B;&#x63A2;&#x8BA8;&#x4E00;&#x4E0B;&#x3002;</p>
+<h4 id="172-&#x7535;&#x79BB;&#x5C42;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x96C6;">17.2 &#x7535;&#x79BB;&#x5C42;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x96C6;</h4>
+<p>&#x672C;&#x7AE0;&#x4F7F;&#x7528;&#x7535;&#x79BB;&#x5C42;&#x4E8C;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x7814;&#x7A76;&#x7535;&#x79BB;&#x5C42;&#x4E2D;&#x7684;&#x81EA;&#x7531;&#x7535;&#x5B50;&#x3002;&#x5206;&#x7C7B;g&#xFF08;&#x597D;&#xFF09;&#x610F;&#x5473;&#x7740;&#x7535;&#x79BB;&#x5C42;&#x4E2D;&#x6709;&#x67D0;&#x4E2A;&#x7ED3;&#x6784;&#xFF1B;b&#xFF08;&#x574F;&#xFF09;&#x4EE3;&#x8868;&#x6CA1;&#x6709;&#xFF0C;&#x4FE1;&#x53F7;&#x901A;&#x8FC7;&#x4E86;&#x7535;&#x79BB;&#x5C42;&#x3002;&#x6570;&#x636E;&#x6709;34&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;351&#x4E2A;&#x6570;&#x636E;&#x3002;</p>
+<p>10&#x6298;&#x68C0;&#x9A8C;&#x4E0B;&#x6700;&#x597D;&#x7684;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;94~98%&#x7684;&#x51C6;&#x786E;&#x5EA6;&#x3002;&#x6570;&#x636E;&#x5728;&#x672C;&#x4E66;&#x7684;data&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x4E0B;&#x8F7D;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;<code>ionosphere.csv</code>&#x3002;&#x6570;&#x636E;&#x96C6;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x89C1;UCI&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#x3002;</p>
+<h4 id="173-&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8C03;&#x5EA6;">17.3 &#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8C03;&#x5EA6;</h4>
+<p>Keras&#x5185;&#x7F6E;&#x4E86;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8C03;&#x5EA6;&#x5668;&#xFF1A;Keras&#x7684;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;<code>SGD</code>&#x7C7B;&#x6709;<code>decay</code>&#x53C2;&#x6570;&#xFF0C;&#x6309;&#x4E0B;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x8C03;&#x6574;&#x901F;&#x5EA6;&#xFF1A;</p>
+<pre><code>LearnRate = LearnRate x (1 / 1 + decay x epoch)
+</code></pre><p>&#x9ED8;&#x8BA4;&#x503C;&#x662F;0&#xFF1A;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<pre><code class="lang-python">LearningRate = <span class="hljs-number">0.1</span> * <span class="hljs-number">1</span>/(<span class="hljs-number">1</span> + <span class="hljs-number">0.0</span> * <span class="hljs-number">1</span>)
+LearningRate = <span class="hljs-number">0.1</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x8870;&#x51CF;&#x7387;&#x5927;&#x4E8E;1&#xFF0C;&#x4F8B;&#x5982;0.001&#xFF0C;&#x6548;&#x679C;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-python">Epoch Learning Rate 
+<span class="hljs-number">1</span> <span class="hljs-number">0.1</span>
+<span class="hljs-number">2</span> <span class="hljs-number">0.0999000999</span> 
+<span class="hljs-number">3</span> <span class="hljs-number">0.0997006985</span> 
+<span class="hljs-number">4</span> <span class="hljs-number">0.09940249103</span> 
+<span class="hljs-number">5</span> <span class="hljs-number">0.09900646517</span>
+</code></pre>
+<p>&#x5230;100&#x8F6E;&#x7684;&#x56FE;&#x50CF;&#xFF1A;</p>
+<p><img src="https://i.imgur.com/aGgYVXf.png" alt="17.2 &#x6309;&#x65F6;&#x95F4;"></p>
+<p>&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8BBE;&#x8BA1;&#xFF1A;</p>
+<pre><code class="lang-python">Decay = LearningRate / Epochs
+Decay = <span class="hljs-number">0.1</span> / <span class="hljs-number">100</span>
+Decay = <span class="hljs-number">0.001</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6309;&#x65F6;&#x95F4;&#x51CF;&#x5C11;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x3002;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6709;1&#x4E2A;&#x9690;&#x5C42;&#xFF0C;34&#x4E2A;&#x795E;&#x7ECF;&#x5143;&#xFF0C;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x662F;&#x6574;&#x6D41;&#x51FD;&#x6570;&#x3002;&#x8F93;&#x51FA;&#x5C42;&#x662F;1&#x4E2A;&#x795E;&#x7ECF;&#x5143;&#xFF0C;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x662F;S&#x578B;&#x51FD;&#x6570;&#xFF0C;&#x8F93;&#x51FA;&#x4E00;&#x4E2A;&#x6982;&#x7387;&#x3002;&#x5B66;&#x4E60;&#x7387;&#x8BBE;&#x5230;0.1&#xFF0C;&#x8BAD;&#x7EC3;50&#x8F6E;&#xFF0C;&#x8870;&#x51CF;&#x7387;0.002&#xFF0C;&#x4E5F;&#x5C31;&#x662F;0.1/50&#x3002;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8C03;&#x6574;&#x4E00;&#x822C;&#x914D;&#x5408;&#x52A8;&#x91CF;&#x4F7F;&#x7528;&#xFF1A;&#x52A8;&#x91CF;&#x8BBE;&#x6210;0.8&#x3002;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> pandas
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.optimizers <span class="hljs-keyword">import</span> SGD
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> LabelEncoder
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
+numpy.random.seed(seed)
+<span class="hljs-comment"># load dataset</span>
+dataframe = pandas.read_csv(<span class="hljs-string">&quot;ionosphere.csv&quot;</span>, header=<span class="hljs-keyword">None</span>)
+dataset = dataframe.values
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">34</span>].astype(float)
+Y = dataset[:,<span class="hljs-number">34</span>]
+<span class="hljs-comment"># encode class values as integers</span>
+encoder = LabelEncoder()
+encoder.fit(Y)
+Y = encoder.transform(Y)
+<span class="hljs-comment"># create model</span>
+model = Sequential()
+model.add(Dense(<span class="hljs-number">34</span>, input_dim=<span class="hljs-number">34</span>, init=<span class="hljs-string">&apos;normal&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">1</span>, init=<span class="hljs-string">&apos;normal&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+<span class="hljs-comment"># Compile model</span>
+epochs = <span class="hljs-number">50</span>
+learning_rate = <span class="hljs-number">0.1</span>
+decay_rate = learning_rate / epochs
+momentum = <span class="hljs-number">0.8</span>
+sgd = SGD(lr=learning_rate, momentum=momentum, decay=decay_rate, nesterov=<span class="hljs-keyword">False</span>) model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=sgd, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>])
+<span class="hljs-comment"># Fit the model</span>
+model.fit(X, Y, validation_split=<span class="hljs-number">0.33</span>, nb_epoch=epochs, batch_size=<span class="hljs-number">28</span>)
+</code></pre>
+<p>&#x8BAD;&#x7EC3;67%&#xFF0C;&#x6D4B;&#x8BD5;33%&#x7684;&#x6570;&#x636E;&#xFF0C;&#x51C6;&#x786E;&#x5EA6;&#x8FBE;&#x5230;&#x4E86;99.14%&#xFF0C;&#x9AD8;&#x4E8E;&#x4E0D;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x4F18;&#x5316;&#x7684;95.69%&#xFF1A;</p>
+<pre><code>235/235 [==============================] - 0s - loss: 0.0607 - acc: 0.9830 - val_loss:
+    0.0732 - val_acc: 0.9914
+Epoch 46/50
+235/235 [==============================] - 0s - loss: 0.0570 - acc: 0.9830 - val_loss:
+    0.0867 - val_acc: 0.9914
+Epoch 47/50
+235/235 [==============================] - 0s - loss: 0.0584 - acc: 0.9830 - val_loss:
+    0.0808 - val_acc: 0.9914
+Epoch 48/50
+235/235 [==============================] - 0s - loss: 0.0610 - acc: 0.9872 - val_loss:
+    0.0653 - val_acc: 0.9828
+Epoch 49/50
+235/235 [==============================] - 0s - loss: 0.0591 - acc: 0.9830 - val_loss:
+    0.0821 - val_acc: 0.9914
+Epoch 50/50
+235/235 [==============================] - 0s - loss: 0.0598 - acc: 0.9872 - val_loss:
+    0.0739 - val_acc: 0.9914
+</code></pre><h4 id="173-&#x57FA;&#x4E8E;&#x8F6E;&#x6570;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8C03;&#x5EA6;">17.3 &#x57FA;&#x4E8E;&#x8F6E;&#x6570;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x8C03;&#x5EA6;</h4>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x56FA;&#x5B9A;&#x8C03;&#x5EA6;&#xFF1A;&#x5230;&#x67D0;&#x4E2A;&#x8F6E;&#x6570;&#x5C31;&#x7528;&#x67D0;&#x4E2A;&#x901F;&#x5EA6;&#xFF0C;&#x6BCF;&#x6B21;&#x7684;&#x901F;&#x5EA6;&#x662F;&#x4E0A;&#x6B21;&#x7684;&#x4E00;&#x534A;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x521D;&#x59CB;&#x901F;&#x5EA6;0.1&#xFF0C;&#x6BCF;10&#x8F6E;&#x964D;&#x4F4E;&#x4E00;&#x534A;&#x3002;&#x753B;&#x56FE;&#x5C31;&#x662F;&#xFF1A;</p>
+<p><img src="https://i.imgur.com/xKKILzV.png" alt="17.3 &#x8F6E;&#x6570;"></p>
+<p>Keras&#x7684;<code>LearningRateScheduler</code>&#x4F5C;&#x4E3A;&#x56DE;&#x8C03;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#xFF0C;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x8F6E;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x5E94;&#x6709;&#x7684;&#x901F;&#x5EA6;&#x3002;&#x8FD8;&#x662F;&#x521A;&#x624D;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x52A0;&#x5165;&#x4E00;&#x4E2A;<code>step_decay</code>&#x51FD;&#x6570;&#xFF0C;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x5B66;&#x4E60;&#x7387;&#xFF1A;</p>
+<pre><code class="lang-Python">LearnRate = InitialLearningRate x Droprate ^ floor((<span class="hljs-number">1</span>+Epoch)/EpochDrop)
+</code></pre>
+<p>InitialLearningRate&#x662F;&#x521D;&#x59CB;&#x7684;&#x901F;&#x5EA6;&#xFF0C;DropRate&#x662F;&#x51CF;&#x901F;&#x9891;&#x7387;&#xFF0C;EpochDrop&#x662F;&#x964D;&#x4F4E;&#x591A;&#x5C11;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> pandas
+<span class="hljs-keyword">import</span> pandas
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.optimizers <span class="hljs-keyword">import</span> SGD
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> LabelEncoder
+<span class="hljs-keyword">from</span> keras.callbacks <span class="hljs-keyword">import</span> LearningRateScheduler
+<span class="hljs-comment"># learning rate schedule</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">step_decay</span><span class="hljs-params">(epoch)</span>:</span>
+  initial_lrate = <span class="hljs-number">0.1</span>
+  drop = <span class="hljs-number">0.5</span>
+  epochs_drop = <span class="hljs-number">10.0</span>
+  lrate = initial_lrate * math.pow(drop, math.floor((<span class="hljs-number">1</span>+epoch)/epochs_drop))
+  <span class="hljs-keyword">return</span> lrate
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
+numpy.random.seed(seed)
+<span class="hljs-comment"># load dataset</span>
+dataframe = pandas.read_csv(<span class="hljs-string">&quot;../data/ionosphere.csv&quot;</span>, header=<span class="hljs-keyword">None</span>)
+dataset = dataframe.values
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">34</span>].astype(float)
+Y = dataset[:,<span class="hljs-number">34</span>]
+<span class="hljs-comment"># encode class values as integers</span>
+encoder = LabelEncoder()
+encoder.fit(Y)
+Y = encoder.transform(Y)
+<span class="hljs-comment"># create model</span>
+model = Sequential()
+model.add(Dense(<span class="hljs-number">34</span>, input_dim=<span class="hljs-number">34</span>, init=<span class="hljs-string">&apos;normal&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+model.add(Dense(<span class="hljs-number">1</span>, init=<span class="hljs-string">&apos;normal&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+<span class="hljs-comment"># Compile model</span>
+sgd = SGD(lr=<span class="hljs-number">0.0</span>, momentum=<span class="hljs-number">0.9</span>, decay=<span class="hljs-number">0.0</span>, nesterov=<span class="hljs-keyword">False</span>) model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=sgd, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>])
+<span class="hljs-comment"># learning schedule callback</span>
+lrate = LearningRateScheduler(step_decay)
+callbacks_list = [lrate]
+<span class="hljs-comment"># Fit the model</span>
+model.fit(X, Y, validation_split=<span class="hljs-number">0.33</span>, nb_epoch=<span class="hljs-number">50</span>, batch_size=<span class="hljs-number">28</span>, callbacks=callbacks_list)
+</code></pre>
+<p>&#x6548;&#x679C;&#x4E5F;&#x662F;99.14%&#xFF0C;&#x6BD4;&#x4EC0;&#x4E48;&#x90FD;&#x4E0D;&#x505A;&#x597D;&#xFF1A;</p>
+<pre><code class="lang-python">Epoch <span class="hljs-number">45</span>/<span class="hljs-number">50</span>
+<span class="hljs-number">235</span>/<span class="hljs-number">235</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.0546</span> - acc: <span class="hljs-number">0.9830</span> - val_loss:
+    <span class="hljs-number">0.0705</span> - val_acc: <span class="hljs-number">0.9914</span>
+Epoch <span class="hljs-number">46</span>/<span class="hljs-number">50</span>
+<span class="hljs-number">235</span>/<span class="hljs-number">235</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.0542</span> - acc: <span class="hljs-number">0.9830</span> - val_loss:
+    <span class="hljs-number">0.0676</span> - val_acc: <span class="hljs-number">0.9914</span>
+Epoch <span class="hljs-number">47</span>/<span class="hljs-number">50</span>
+<span class="hljs-number">235</span>/<span class="hljs-number">235</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.0538</span> - acc: <span class="hljs-number">0.9830</span> - val_loss:
+    <span class="hljs-number">0.0668</span> - val_acc: <span class="hljs-number">0.9914</span>
+Epoch <span class="hljs-number">48</span>/<span class="hljs-number">50</span>
+<span class="hljs-number">235</span>/<span class="hljs-number">235</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.0539</span> - acc: <span class="hljs-number">0.9830</span> - val_loss:
+    <span class="hljs-number">0.0708</span> - val_acc: <span class="hljs-number">0.9914</span>
+Epoch <span class="hljs-number">49</span>/<span class="hljs-number">50</span>
+<span class="hljs-number">235</span>/<span class="hljs-number">235</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.0539</span> - acc: <span class="hljs-number">0.9830</span> - val_loss:
+    <span class="hljs-number">0.0674</span> - val_acc: <span class="hljs-number">0.9914</span>
+Epoch <span class="hljs-number">50</span>/<span class="hljs-number">50</span>
+<span class="hljs-number">235</span>/<span class="hljs-number">235</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.0531</span> - acc: <span class="hljs-number">0.9830</span> - val_loss:
+    <span class="hljs-number">0.0694</span> - val_acc: <span class="hljs-number">0.9914</span>
+</code></pre>
+<h4 id="175-&#x8C03;&#x6574;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x7684;&#x6280;&#x5DE7;">17.5 &#x8C03;&#x6574;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x7684;&#x6280;&#x5DE7;</h4>
+<p>&#x8FD9;&#x4E9B;&#x6280;&#x5DE7;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x8C03;&#x53C2;&#xFF1A;</p>
+<ol>
+<li>&#x589E;&#x52A0;&#x521D;&#x59CB;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x3002;&#x56E0;&#x4E3A;&#x901F;&#x5EA6;&#x540E;&#x9762;&#x4F1A;&#x964D;&#x4F4E;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x901F;&#x5EA6;&#x5FEB;&#x70B9;&#x53EF;&#x4EE5;&#x52A0;&#x901F;&#x6536;&#x655B;&#x3002;</li>
+<li>&#x52A8;&#x91CF;&#x8981;&#x5927;&#x3002;&#x8FD9;&#x6837;&#x540E;&#x671F;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x4E0B;&#x964D;&#x65F6;&#x5982;&#x679C;&#x65B9;&#x5411;&#x4E00;&#x6837;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6536;&#x655B;&#x3002;</li>
+<li>&#x591A;&#x8BD5;&#x9A8C;&#x3002;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x6CA1;&#x6709;&#x5B9A;&#x8BBA;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x5C1D;&#x8BD5;&#x3002;&#x4E5F;&#x8BD5;&#x8BD5;&#x6307;&#x6570;&#x4E0B;&#x964D;&#x548C;&#x4EC0;&#x4E48;&#x90FD;&#x4E0D;&#x505A;&#x3002;</li>
+</ol>
+<h4 id="176-&#x603B;&#x7ED3;">17.6 &#x603B;&#x7ED3;</h4>
+<p>&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x8C03;&#x6574;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x3002;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x8C03;&#x6574;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x6548;</li>
+<li>&#x5982;&#x4F55;&#x5728;Keras&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x4E0B;&#x964D;</li>
+<li>&#x5982;&#x4F55;&#x81EA;&#x5DF1;&#x7F16;&#x5199;&#x4E0B;&#x964D;&#x901F;&#x5EA6;&#x51FD;&#x6570;</li>
+</ul>
+<h5 id="1761-&#x4E0B;&#x4E00;&#x7AE0;">17.6.1 &#x4E0B;&#x4E00;&#x7AE0;</h5>
+<p>&#x7B2C;&#x56DB;&#x7AE0;&#x5230;&#x6B64;&#x7ED3;&#x675F;&#xFF0C;&#x5305;&#x62EC;Keras&#x7684;&#x4E00;&#x4E9B;&#x9AD8;&#x7EA7;&#x51FD;&#x6570;&#x548C;&#x8C03;&#x53C2;&#x7684;&#x9AD8;&#x7EA7;&#x65B9;&#x6CD5;&#x3002;&#x4E0B;&#x4E00;&#x7AE0;&#x7814;&#x7A76;&#x5377;&#x79EF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF08;CNN&#xFF09;&#xFF0C;&#x5728;&#x56FE;&#x7247;&#x548C;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x5904;&#x7406;&#x4E0A;&#x5C24;&#x4E3A;&#x6709;&#x6548;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch16-reduce-overfitting-with-dropout-regularization.html" class="navigation navigation-prev " aria-label="Previous page: 第16章 使用Dropout正则化防止过拟合">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../5-convolutional-neural-networks/part5.html" class="navigation navigation-next " aria-label="Next page: V 卷积神经网络">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第17章 学习速度设计","level":"1.7.5","depth":2,"next":{"title":"V 卷积神经网络","level":"1.8","depth":1,"path":"5-convolutional-neural-networks/part5.md","ref":"5-convolutional-neural-networks/part5.md","articles":[]},"previous":{"title":"第16章 使用Dropout正则化防止过拟合","level":"1.7.4","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"katex":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.md","mtime":"2017-11-13T06:53:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T06:57:06.236Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,666 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第15章 模型训练效果可视化 · 深度学习：Python教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Beining <i@cnbeining.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch16-reduce-overfitting-with-dropout-regularization.html" />
+    
+    
+    <link rel="prev" href="ch14-keep-the-best-models-during-training-with-checkpointing.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.cnbeining.com/" target="_blank" class="custom-link">Beining's Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/cnbeining/deep-learning-with-python-cn" target="_blank" class="custom-link">Github</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/cnbeining/deep-learning-with-python-cn/issues" target="_blank" class="custom-link">讨论区</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    封面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Preface.html">
+            
+                <a href="../Preface.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Preface-translator.html">
+            
+                <a href="../Preface-translator.html">
+            
+                    
+                    译者的话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../1-introduction/part1.html">
+            
+                <a href="../1-introduction/part1.html">
+            
+                    
+                    I 简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../1-introduction/ch1-welcome.html">
+            
+                <a href="../1-introduction/ch1-welcome.html">
+            
+                    
+                    第1章 深度学习入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../2-background/part2.html">
+            
+                <a href="../2-background/part2.html">
+            
+                    
+                    II 背景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../2-background/ch2-introduction-to-theano.html">
+            
+                <a href="../2-background/ch2-introduction-to-theano.html">
+            
+                    
+                    第2章 Theano入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../2-background/ch3-introduction-to-tensorflow.html">
+            
+                <a href="../2-background/ch3-introduction-to-tensorflow.html">
+            
+                    
+                    第3章 TensorFlow入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../2-background/ch4-introduction-to-keras.html">
+            
+                <a href="../2-background/ch4-introduction-to-keras.html">
+            
+                    
+                    第4章 Keras入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.html">
+            
+                <a href="../2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.html">
+            
+                    
+                    第5章 项目：在云上搭建机器学习环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../3-multi-layer-perceptrons/part3.html">
+            
+                <a href="../3-multi-layer-perceptrons/part3.html">
+            
+                    
+                    III 多层感知器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.html">
+            
+                    
+                    第6章 多层感知器入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.html">
+            
+                    
+                    第7章 使用Keras开发神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.html">
+            
+                    
+                    第8章 测试神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.html">
+            
+                    
+                    第9章 使用Scikit-Learn调用Keras的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.html">
+            
+                    
+                    第10章 项目：多类花朵分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.html">
+            
+                    
+                    第11章 项目：声呐返回值分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.html">
+            
+                    
+                    第12章 项目：波士顿住房价格回归
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="part4.html">
+            
+                <a href="part4.html">
+            
+                    
+                    IV Keras与高级多层感知器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="ch13-save-your-models-for-later-with-serialization.html">
+            
+                <a href="ch13-save-your-models-for-later-with-serialization.html">
+            
+                    
+                    第13章 用序列化保存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                <a href="ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                    
+                    第14章 使用保存点保存最好的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.3" data-path="ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                <a href="ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                    
+                    第15章 模型训练效果可视化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                <a href="ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                    
+                    第16章 使用Dropout正则化防止过拟合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                <a href="ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                    
+                    第17章 学习速度设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../5-convolutional-neural-networks/part5.html">
+            
+                <a href="../5-convolutional-neural-networks/part5.html">
+            
+                    
+                    V 卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第15章 模型训练效果可视化</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x7B2C;15&#x7AE0;-&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x53EF;&#x89C6;&#x5316;">&#x7B2C;15&#x7AE0; &#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x53EF;&#x89C6;&#x5316;</h3>
+<p>&#x67E5;&#x770B;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x7684;&#x5386;&#x53F2;&#x6570;&#x636E;&#x5927;&#x6709;&#x88E8;&#x76CA;&#x3002;&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x5C06;&#x6A21;&#x578B;&#x7684;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x8FDB;&#x884C;&#x53EF;&#x89C6;&#x5316;&#x3002;&#x672C;&#x7AE0;&#x6559;&#x4F60;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x4F55;&#x89C2;&#x5BDF;&#x5386;&#x53F2;&#x8BAD;&#x7EC3;&#x6570;&#x636E;</li>
+<li>&#x5982;&#x4F55;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#x7ED8;&#x5236;&#x6570;&#x636E;&#x51C6;&#x786E;&#x6027;&#x56FE;&#x50CF;</li>
+<li>&#x5982;&#x4F55;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#x7ED8;&#x5236;&#x635F;&#x5931;&#x56FE;&#x50CF;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x5427;&#x3002;</p>
+<h4 id="151-&#x53D6;&#x5386;&#x53F2;&#x6570;&#x636E;">15.1 &#x53D6;&#x5386;&#x53F2;&#x6570;&#x636E;</h4>
+<p>&#x4E0A;&#x4E00;&#x7AE0;&#x8BF4;&#x5230;Keras&#x652F;&#x6301;&#x56DE;&#x8C03;API&#xFF0C;&#x5176;&#x4E2D;&#x9ED8;&#x8BA4;&#x8C03;&#x7528;<code>History</code>&#x51FD;&#x6570;&#xFF0C;&#x6BCF;&#x8F6E;&#x8BAD;&#x7EC3;&#x6536;&#x96C6;&#x635F;&#x5931;&#x548C;&#x51C6;&#x786E;&#x7387;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6D4B;&#x8BD5;&#x96C6;&#xFF0C;&#x4E5F;&#x4F1A;&#x6536;&#x96C6;&#x6D4B;&#x8BD5;&#x96C6;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x5386;&#x53F2;&#x6570;&#x636E;&#x4F1A;&#x6536;&#x96C6;<code>fit()</code>&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5728;<code>history</code>&#x5BF9;&#x8C61;&#x4E2D;&#x3002;&#x770B;&#x4E00;&#x4E0B;&#x5230;&#x5E95;&#x6536;&#x96C6;&#x4E86;&#x4EC0;&#x4E48;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># list all data in history</span>
+print(history.history.keys())
+</code></pre>
+<p>&#x5982;&#x679C;&#x662F;&#x7B2C;7&#x7AE0;&#x7684;&#x4E8C;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF1A;</p>
+<pre><code class="lang-python">[<span class="hljs-string">&apos;acc&apos;</span>, <span class="hljs-string">&apos;loss&apos;</span>, <span class="hljs-string">&apos;val_acc&apos;</span>, <span class="hljs-string">&apos;val_loss&apos;</span>]
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x753B;&#x6298;&#x7EBF;&#x56FE;&#xFF0C;&#x76F4;&#x89C2;&#x770B;&#x5230;&#xFF1A;</p>
+<ul>
+<li>&#x6A21;&#x578B;&#x6536;&#x655B;&#x7684;&#x901F;&#x5EA6;&#xFF08;&#x659C;&#x7387;&#xFF09;</li>
+<li>&#x6A21;&#x578B;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6536;&#x655B;&#xFF08;&#x7A33;&#x5B9A;&#x6027;&#xFF09;</li>
+<li>&#x6A21;&#x578B;&#x662F;&#x5426;&#x8FC7;&#x62DF;&#x5408;&#xFF08;&#x9A8C;&#x8BC1;&#x6570;&#x636E;&#x96C6;&#xFF09;</li>
+</ul>
+<p>&#x4EE5;&#x53CA;&#x66F4;&#x591A;&#x3002;</p>
+<h4 id="152-&#x53EF;&#x89C6;&#x5316;keras&#x6A21;&#x578B;&#x8BAD;&#x7EC3;">15.2 &#x53EF;&#x89C6;&#x5316;Keras&#x6A21;&#x578B;&#x8BAD;&#x7EC3;</h4>
+<p>&#x6536;&#x96C6;&#x4E00;&#x4E0B;&#x7B2C;7&#x7AE0;&#x76AE;&#x9A6C;&#x4EBA;&#x7CD6;&#x5C3F;&#x75C5;&#x6A21;&#x578B;&#x7684;&#x5386;&#x53F2;&#x6570;&#x636E;&#xFF0C;&#x7ED8;&#x5236;&#xFF1A;</p>
+<ol>
+<li>&#x8BAD;&#x7EC3;&#x548C;&#x9A8C;&#x8BC1;&#x96C6;&#x7684;&#x51C6;&#x786E;&#x5EA6;</li>
+<li>&#x8BAD;&#x7EC3;&#x548C;&#x9A8C;&#x8BC1;&#x96C6;&#x7684;&#x635F;&#x5931;</li>
+</ol>
+<pre><code class="lang-python"><span class="hljs-comment"># Visualize training history</span>
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
+numpy.random.seed(seed)
+<span class="hljs-comment"># load pima indians dataset</span>
+dataset = numpy.loadtxt(<span class="hljs-string">&quot;pima-indians-diabetes.csv&quot;</span>, delimiter=<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">8</span>]
+Y = dataset[:,<span class="hljs-number">8</span>]
+<span class="hljs-comment"># create model</span>
+model = Sequential()
+model.add(Dense(<span class="hljs-number">12</span>, input_dim=<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+model.add(Dense(<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+model.add(Dense(<span class="hljs-number">1</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+<span class="hljs-comment"># Compile model</span>
+model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=<span class="hljs-string">&apos;adam&apos;</span>, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>])
+<span class="hljs-comment"># Fit the model</span>
+history = model.fit(X, Y, validation_split=<span class="hljs-number">0.33</span>, nb_epoch=<span class="hljs-number">150</span>, batch_size=<span class="hljs-number">10</span>, verbose=<span class="hljs-number">0</span>) <span class="hljs-comment"># list all data in history</span>
+print(history.history.keys())
+<span class="hljs-comment"># summarize history for accuracy</span>
+plt.plot(history.history[<span class="hljs-string">&apos;acc&apos;</span>])
+plt.plot(history.history[<span class="hljs-string">&apos;val_acc&apos;</span>])
+plt.title(<span class="hljs-string">&apos;model accuracy&apos;</span>)
+plt.ylabel(<span class="hljs-string">&apos;accuracy&apos;</span>)
+plt.xlabel(<span class="hljs-string">&apos;epoch&apos;</span>)
+plt.legend([<span class="hljs-string">&apos;train&apos;</span>, <span class="hljs-string">&apos;test&apos;</span>], loc=<span class="hljs-string">&apos;upper left&apos;</span>) plt.show()
+<span class="hljs-comment"># summarize history for loss plt.plot(history.history[&apos;loss&apos;]) plt.plot(history.history[&apos;val_loss&apos;]) plt.title(&apos;model loss&apos;)</span>
+plt.ylabel(<span class="hljs-string">&apos;loss&apos;</span>)
+plt.xlabel(<span class="hljs-string">&apos;epoch&apos;</span>)
+plt.legend([<span class="hljs-string">&apos;train&apos;</span>, <span class="hljs-string">&apos;test&apos;</span>], loc=<span class="hljs-string">&apos;upper left&apos;</span>) plt.show()
+</code></pre>
+<p>&#x56FE;&#x50CF;&#x5982;&#x4E0B;&#x3002;&#x6700;&#x540E;&#x51E0;&#x8F6E;&#x7684;&#x51C6;&#x786E;&#x7387;&#x8FD8;&#x5728;&#x4E0A;&#x5347;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x8FC7;&#x5EA6;&#x5B66;&#x4E60;&#xFF1B;&#x4F46;&#x662F;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x7684;&#x6548;&#x679C;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x5E94;&#x8BE5;&#x6CA1;&#x6709;&#x8FC7;&#x62DF;&#x5408;&#x3002;</p>
+<p><img src="https://i.imgur.com/ngFUnWu.png" alt="15.1 &#x51C6;&#x786E;&#x5EA6;&#x56FE;&#x50CF;"></p>
+<p>&#x4ECE;&#x635F;&#x5931;&#x56FE;&#x50CF;&#x770B;&#xFF0C;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x7684;&#x6027;&#x80FD;&#x5DEE;&#x4E0D;&#x591A;&#x3002;&#x5982;&#x679C;&#x4E24;&#x6761;&#x7EBF;&#x5F00;&#x59CB;&#x5206;&#x5F00;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5E94;&#x8BE5;&#x63D0;&#x524D;&#x7EC8;&#x6B62;&#x8BAD;&#x7EC3;&#x3002;</p>
+<p><img src="https://i.imgur.com/r5XHhJy.png" alt="15.2 &#x635F;&#x5931;&#x56FE;&#x50CF;"></p>
+<h4 id="153-&#x603B;&#x7ED3;">15.3 &#x603B;&#x7ED3;</h4>
+<p>&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x3002;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x4F55;&#x770B;&#x5386;&#x53F2;&#x5BF9;&#x8C61;</li>
+<li>&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x5386;&#x53F2;&#x6027;&#x80FD;</li>
+<li>&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x7684;&#x4E0D;&#x540C;&#x6027;&#x80FD;</li>
+</ul>
+<h5 id="1531-&#x4E0B;&#x4E00;&#x7AE0;">15.3.1 &#x4E0B;&#x4E00;&#x7AE0;</h5>
+<p>Dropout&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;&#xFF1A;&#x4E0B;&#x4E00;&#x7AE0;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x6280;&#x672F;&#x3001;&#x5982;&#x4F55;&#x5728;Keras&#x4E2D;&#x5B9E;&#x73B0;&#x4EE5;&#x53CA;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch14-keep-the-best-models-during-training-with-checkpointing.html" class="navigation navigation-prev " aria-label="Previous page: 第14章 使用保存点保存最好的模型">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch16-reduce-overfitting-with-dropout-regularization.html" class="navigation navigation-next " aria-label="Next page: 第16章 使用Dropout正则化防止过拟合">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第15章 模型训练效果可视化","level":"1.7.3","depth":2,"next":{"title":"第16章 使用Dropout正则化防止过拟合","level":"1.7.4","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.md","articles":[]},"previous":{"title":"第14章 使用保存点保存最好的模型","level":"1.7.2","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"katex":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.md","mtime":"2017-11-13T06:50:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T06:57:06.236Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

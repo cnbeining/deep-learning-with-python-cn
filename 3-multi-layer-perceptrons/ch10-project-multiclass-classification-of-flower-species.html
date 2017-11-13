@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
@@ -371,6 +375,90 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.html">
+            
+                    
+                    第13章 用序列化保存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                    
+                    第14章 使用保存点保存最好的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                    
+                    第15章 模型训练效果可视化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                    
+                    第16章 使用Dropout正则化防止过拟合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                    
+                    第17章 学习速度设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../5-convolutional-neural-networks/part5.html">
+            
+                <a href="../5-convolutional-neural-networks/part5.html">
+            
+                    
+                    V 卷积神经网络
+            
+                </a>
+            
+
+            
         </li>
     
 
@@ -436,75 +524,88 @@
 <li>&#x7C7B;&#x522B;</li>
 </ol>
 <p>&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x591A;&#x7C7B;&#x5206;&#x7C7B;&#x7684;&#xFF1A;&#x6709;&#x4E24;&#x79CD;&#x4EE5;&#x4E0A;&#x7684;&#x7C7B;&#x522B;&#x9700;&#x8981;&#x9884;&#x6D4B;&#xFF0C;&#x786E;&#x5207;&#x7684;&#x8BF4;&#xFF0C;3&#x79CD;&#x3002;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x9700;&#x8981;&#x5BF9;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x505A;&#x51FA;&#x7279;&#x6B8A;&#x8C03;&#x6574;&#x3002;&#x6570;&#x636E;&#x6709;150&#x6761;&#xFF1A;&#x524D;5&#x884C;&#x662F;&#xFF1A;</p>
-<pre><code>5.1,3.5,1.4,0.2,Iris-setosa
-4.9,3.0,1.4,0.2,Iris-setosa
-4.7,3.2,1.3,0.2,Iris-setosa
-4.6,3.1,1.5,0.2,Iris-setosa
-5.0,3.6,1.4,0.2,Iris-setosa
-</code></pre><p>&#x9E22;&#x5C3E;&#x82B1;&#x6570;&#x636E;&#x96C6;&#x5DF2;&#x7ECF;&#x88AB;&#x5145;&#x5206;&#x7814;&#x7A76;&#xFF0C;&#x6A21;&#x578B;&#x7684;&#x51C6;&#x786E;&#x7387;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;95%&#x5230;97%&#xFF0C;&#x4F5C;&#x4E3A;&#x76EE;&#x6807;&#x5F88;&#x4E0D;&#x9519;&#x3002;&#x672C;&#x4E66;&#x7684;data&#x76EE;&#x5F55;&#x4E0B;&#x9644;&#x5E26;&#x4E86;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;UCI&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#x4E0B;&#x8F7D;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;<code>iris.csv</code>&#x3002;&#x6570;&#x636E;&#x96C6;&#x7684;&#x8BE6;&#x60C5;&#x8BF7;&#x5728;UCI&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#x67E5;&#x8BE2;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-number">5.1</span>,<span class="hljs-number">3.5</span>,<span class="hljs-number">1.4</span>,<span class="hljs-number">0.2</span>,Iris-setosa
+<span class="hljs-number">4.9</span>,<span class="hljs-number">3.0</span>,<span class="hljs-number">1.4</span>,<span class="hljs-number">0.2</span>,Iris-setosa
+<span class="hljs-number">4.7</span>,<span class="hljs-number">3.2</span>,<span class="hljs-number">1.3</span>,<span class="hljs-number">0.2</span>,Iris-setosa
+<span class="hljs-number">4.6</span>,<span class="hljs-number">3.1</span>,<span class="hljs-number">1.5</span>,<span class="hljs-number">0.2</span>,Iris-setosa
+<span class="hljs-number">5.0</span>,<span class="hljs-number">3.6</span>,<span class="hljs-number">1.4</span>,<span class="hljs-number">0.2</span>,Iris-setosa
+</code></pre>
+<p>&#x9E22;&#x5C3E;&#x82B1;&#x6570;&#x636E;&#x96C6;&#x5DF2;&#x7ECF;&#x88AB;&#x5145;&#x5206;&#x7814;&#x7A76;&#xFF0C;&#x6A21;&#x578B;&#x7684;&#x51C6;&#x786E;&#x7387;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;95%&#x5230;97%&#xFF0C;&#x4F5C;&#x4E3A;&#x76EE;&#x6807;&#x5F88;&#x4E0D;&#x9519;&#x3002;&#x672C;&#x4E66;&#x7684;data&#x76EE;&#x5F55;&#x4E0B;&#x9644;&#x5E26;&#x4E86;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;UCI&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#x4E0B;&#x8F7D;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;<code>iris.csv</code>&#x3002;&#x6570;&#x636E;&#x96C6;&#x7684;&#x8BE6;&#x60C5;&#x8BF7;&#x5728;UCI&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#x67E5;&#x8BE2;&#x3002;</p>
 <h4 id="102-&#x5BFC;&#x5165;&#x5E93;&#x548C;&#x51FD;&#x6570;">10.2 &#x5BFC;&#x5165;&#x5E93;&#x548C;&#x51FD;&#x6570;</h4>
 <p>&#x6211;&#x4EEC;&#x5BFC;&#x5165;&#x6240;&#x9700;&#x8981;&#x7684;&#x5E93;&#x548C;&#x51FD;&#x6570;&#xFF0C;&#x5305;&#x62EC;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x5305;Keras&#x3001;&#x6570;&#x636E;&#x5904;&#x7406;&#x5305;pandas&#x548C;&#x6A21;&#x578B;&#x6D4B;&#x8BD5;&#x5305;scikit-learn&#x3002;</p>
-<pre><code>import numpy
-import pandas
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.wrappers.scikit_learn import KerasClassifier
-from keras.utils import np_utils
-from sklearn.cross_validation import cross_val_score
-from sklearn.cross_validation import KFold
-from sklearn.preprocessing import LabelEncoder
-from sklearn.pipeline import Pipeline
-</code></pre><h4 id="103-&#x6307;&#x5B9A;&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;">10.3 &#x6307;&#x5B9A;&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;</h4>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">import</span> pandas
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.wrappers.scikit_learn <span class="hljs-keyword">import</span> KerasClassifier
+<span class="hljs-keyword">from</span> keras.utils <span class="hljs-keyword">import</span> np_utils
+<span class="hljs-keyword">from</span> sklearn.cross_validation <span class="hljs-keyword">import</span> cross_val_score
+<span class="hljs-keyword">from</span> sklearn.cross_validation <span class="hljs-keyword">import</span> KFold
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> LabelEncoder
+<span class="hljs-keyword">from</span> sklearn.pipeline <span class="hljs-keyword">import</span> Pipeline
+</code></pre>
+<h4 id="103-&#x6307;&#x5B9A;&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;">10.3 &#x6307;&#x5B9A;&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;</h4>
 <p>&#x6211;&#x4EEC;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x79CD;&#x5B50;&#xFF0C;&#x8FD9;&#x6837;&#x91CD;&#x590D;&#x8FD0;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x4F1A;&#x4E00;&#x81F4;&#xFF0C;&#x4EE5;&#x4FBF;&#x590D;&#x73B0;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code># fix random seed for reproducibility
-seed = 7
+<pre><code class="lang-python"><span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
 numpy.random.seed(seed)
-</code></pre><h4 id="104-&#x5BFC;&#x5165;&#x6570;&#x636E;">10.4 &#x5BFC;&#x5165;&#x6570;&#x636E;</h4>
+</code></pre>
+<h4 id="104-&#x5BFC;&#x5165;&#x6570;&#x636E;">10.4 &#x5BFC;&#x5165;&#x6570;&#x636E;</h4>
 <p>&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5BFC;&#x5165;&#x3002;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x5305;&#x542B;&#x5B57;&#x7B26;&#xFF0C;&#x7528;pandas&#x66F4;&#x5BB9;&#x6613;&#x3002;&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x7684;&#x5C5E;&#x6027;&#xFF08;&#x5217;&#xFF09;&#x5206;&#x6210;&#x8F93;&#x5165;&#x53D8;&#x91CF;&#xFF08;X&#xFF09;&#x548C;&#x8F93;&#x51FA;&#x53D8;&#x91CF;&#xFF08;Y&#xFF09;&#xFF1A;</p>
-<pre><code># load dataset
-dataframe = pandas.read_csv(&quot;iris.csv&quot;, header=None)
+<pre><code class="lang-python"><span class="hljs-comment"># load dataset</span>
+dataframe = pandas.read_csv(<span class="hljs-string">&quot;iris.csv&quot;</span>, header=<span class="hljs-keyword">None</span>)
 dataset = dataframe.values
-X = dataset[:,0:4].astype(float)
-Y = dataset[:,4]
-</code></pre><h4 id="105-&#x8F93;&#x51FA;&#x53D8;&#x91CF;&#x7F16;&#x7801;">10.5 &#x8F93;&#x51FA;&#x53D8;&#x91CF;&#x7F16;&#x7801;</h4>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">4</span>].astype(float)
+Y = dataset[:,<span class="hljs-number">4</span>]
+</code></pre>
+<h4 id="105-&#x8F93;&#x51FA;&#x53D8;&#x91CF;&#x7F16;&#x7801;">10.5 &#x8F93;&#x51FA;&#x53D8;&#x91CF;&#x7F16;&#x7801;</h4>
 <p>&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#xFF1A;&#x5728;&#x4F7F;&#x7528;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x65F6;&#x5E94;&#x8BE5;&#x5C06;&#x7C7B;&#x522B;&#x7F16;&#x7801;&#x6210;&#x77E9;&#x9635;&#xFF0C;&#x6BCF;&#x884C;&#x6BCF;&#x5217;&#x4EE3;&#x8868;&#x6240;&#x5C5E;&#x7C7B;&#x522B;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x72EC;&#x70ED;&#x7F16;&#x7801;&#xFF0C;&#x6216;&#x8005;&#x52A0;&#x5165;&#x4E00;&#x5217;&#x3002;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x4E2D;&#x6709;3&#x4E2A;&#x7C7B;&#x522B;&#xFF1A;<code>Iris-setosa</code>&#x3001;<code>Iris-versicolor</code>&#x548C;<code>Iris-virginica</code>&#x3002;&#x5982;&#x679C;&#x6570;&#x636E;&#x662F;</p>
-<pre><code>Iris-setosa
+<pre><code class="lang-python">Iris-setosa
 Iris-versicolor
 Iris-virginica
-</code></pre><p>&#x7528;&#x72EC;&#x70ED;&#x7F16;&#x7801;&#x53EF;&#x4EE5;&#x7F16;&#x7801;&#x6210;&#x8FD9;&#x79CD;&#x77E9;&#x9635;&#xFF1A;</p>
-<pre><code>Iris-setosa, Iris-versicolor, Iris-virginica 1, 0, 0
-0, 1, 0
-0, 0, 1
-</code></pre><p>scikit-learn&#x7684;<code>LabelEncoder</code>&#x53EF;&#x4EE5;&#x5C06;&#x7C7B;&#x522B;&#x53D8;&#x6210;&#x6570;&#x5B57;&#xFF0C;&#x7136;&#x540E;&#x7528;Keras&#x7684;<code>to_categorical()</code>&#x51FD;&#x6570;&#x7F16;&#x7801;&#xFF1A;</p>
-<pre><code># encode class values as integers
+</code></pre>
+<p>&#x7528;&#x72EC;&#x70ED;&#x7F16;&#x7801;&#x53EF;&#x4EE5;&#x7F16;&#x7801;&#x6210;&#x8FD9;&#x79CD;&#x77E9;&#x9635;&#xFF1A;</p>
+<pre><code class="lang-python">Iris-setosa, Iris-versicolor, Iris-virginica <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
+<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>
+<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
+</code></pre>
+<p>scikit-learn&#x7684;<code>LabelEncoder</code>&#x53EF;&#x4EE5;&#x5C06;&#x7C7B;&#x522B;&#x53D8;&#x6210;&#x6570;&#x5B57;&#xFF0C;&#x7136;&#x540E;&#x7528;Keras&#x7684;<code>to_categorical()</code>&#x51FD;&#x6570;&#x7F16;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># encode class values as integers</span>
 encoder = LabelEncoder()
 encoder.fit(Y)
 encoded_Y = encoder.transform(Y)
-# convert integers to dummy variables (i.e. one hot encoded)
+<span class="hljs-comment"># convert integers to dummy variables (i.e. one hot encoded)</span>
 dummy_y = np_utils.to_categorical(encoded_Y)
-</code></pre><h4 id="106-&#x8BBE;&#x8BA1;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;">10.6 &#x8BBE;&#x8BA1;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h4>
+</code></pre>
+<h4 id="106-&#x8BBE;&#x8BA1;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;">10.6 &#x8BBE;&#x8BA1;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h4>
 <p>Keras&#x63D0;&#x4F9B;&#x4E86;<code>KerasClassifier</code>&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x7F51;&#x7EDC;&#x5C01;&#x88C5;&#xFF0C;&#x5728;scikit-learn&#x4E0A;&#x7528;&#x3002;<code>KerasClassifier</code>&#x7684;&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;&#x662F;&#x6A21;&#x578B;&#x540D;&#x79F0;&#xFF0C;&#x8FD4;&#x56DE;&#x4F9B;&#x8BAD;&#x7EC3;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x5199;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4E3A;&#x9E22;&#x5C3E;&#x82B1;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF1A;&#x8FD9;&#x4E2A;&#x5168;&#x8FDE;&#x63A5;&#x7F51;&#x7EDC;&#x53EA;&#x6709;1&#x4E2A;&#x5E26;&#x6709;4&#x4E2A;&#x795E;&#x7ECF;&#x5143;&#x7684;&#x9690;&#x5C42;&#xFF0C;&#x548C;&#x8F93;&#x5165;&#x7684;&#x53D8;&#x91CF;&#x6570;&#x76F8;&#x540C;&#x3002;&#x4E3A;&#x4E86;&#x6548;&#x679C;&#xFF0C;&#x9690;&#x5C42;&#x4F7F;&#x7528;&#x6574;&#x6D41;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7528;&#x4E86;&#x72EC;&#x70ED;&#x7F16;&#x7801;&#xFF0C;&#x7F51;&#x7EDC;&#x7684;&#x8F93;&#x51FA;&#x5FC5;&#x987B;&#x662F;3&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x4EE3;&#x8868;&#x4E00;&#x79CD;&#x82B1;&#xFF0C;&#x6700;&#x5927;&#x7684;&#x53D8;&#x91CF;&#x4EE3;&#x8868;&#x9884;&#x6D4B;&#x79CD;&#x7C7B;&#x3002;&#x7F51;&#x7EDC;&#x7684;&#x7ED3;&#x6784;&#x662F;&#xFF1A;</p>
-<pre><code>4&#x4E2A;&#x795E;&#x7ECF;&#x5143; &#x8F93;&#x5165;&#x5C42; -&gt; [4&#x4E2A;&#x795E;&#x7ECF;&#x5143; &#x9690;&#x5C42;] -&gt; 3&#x4E2A;&#x795E;&#x7ECF;&#x5143; &#x8F93;&#x51FA;&#x5C42;
-</code></pre><p>&#x8F93;&#x51FA;&#x5C42;&#x7684;&#x51FD;&#x6570;&#x662F;S&#x578B;&#x51FD;&#x6570;&#xFF0C;&#x628A;&#x53EF;&#x80FD;&#x6027;&#x6620;&#x5C04;&#x5230;&#x6982;&#x7387;&#x7684;0&#x5230;1&#x3002;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x9009;&#x62E9;ADAM&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#xFF0C;&#x635F;&#x5931;&#x51FD;&#x6570;&#x662F;&#x5BF9;&#x6570;&#x51FD;&#x6570;&#xFF0C;&#x5728;Keras&#x4E2D;&#x53EB;<code>categorical_crossentropy</code>&#xFF1A;</p>
-<pre><code># define baseline model
-def baseline_model():
-# create model
-model = Sequential()
-model.add(Dense(4, input_dim=4, init=&apos;normal&apos;, activation=&apos;relu&apos;)) model.add(Dense(3, init=&apos;normal&apos;, activation=&apos;sigmoid&apos;))
-  # Compile model
-model.compile(loss=&apos;categorical_crossentropy&apos;, optimizer=&apos;adam&apos;, metrics=[&apos;accuracy&apos;]) return model
-</code></pre><p>&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E2A;&#x6A21;&#x578B;&#x521B;&#x5EFA;<code>KerasClassifier</code>&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4F1A;&#x4F20;&#x9012;&#x5230;<code>fit()</code>&#x51FD;&#x6570;&#x4E2D;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x8BAD;&#x7EC3;&#x6B21;&#x6570;<code>nb_epoch</code>&#x8BBE;&#x6210;150&#xFF0C;&#x6279;&#x5C3A;&#x5BF8;<code>batch_size</code>&#x8BBE;&#x6210;5&#xFF0C;<code>verbose</code>&#x8BBE;&#x6210;0&#x4EE5;&#x5173;&#x95ED;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre><code>estimator = KerasClassifier(build_fn=baseline_model, nb_epoch=200, batch_size=5, verbose=0)
-</code></pre><h4 id="107-&#x7528;k&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;">10.7 &#x7528;K&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;</h4>
+<pre><code class="lang-python">4&#x4E2A;&#x795E;&#x7ECF;&#x5143; &#x8F93;&#x5165;&#x5C42; -&gt; [4&#x4E2A;&#x795E;&#x7ECF;&#x5143; &#x9690;&#x5C42;] -&gt; 3&#x4E2A;&#x795E;&#x7ECF;&#x5143; &#x8F93;&#x51FA;&#x5C42;
+</code></pre>
+<p>&#x8F93;&#x51FA;&#x5C42;&#x7684;&#x51FD;&#x6570;&#x662F;S&#x578B;&#x51FD;&#x6570;&#xFF0C;&#x628A;&#x53EF;&#x80FD;&#x6027;&#x6620;&#x5C04;&#x5230;&#x6982;&#x7387;&#x7684;0&#x5230;1&#x3002;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x9009;&#x62E9;ADAM&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#xFF0C;&#x635F;&#x5931;&#x51FD;&#x6570;&#x662F;&#x5BF9;&#x6570;&#x51FD;&#x6570;&#xFF0C;&#x5728;Keras&#x4E2D;&#x53EB;<code>categorical_crossentropy</code>&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># define baseline model</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">baseline_model</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># create model</span>
+    model = Sequential()
+    model.add(Dense(<span class="hljs-number">4</span>, input_dim=<span class="hljs-number">4</span>, init=<span class="hljs-string">&apos;normal&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">3</span>, init=<span class="hljs-string">&apos;normal&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+    <span class="hljs-comment"># Compile model</span>
+    model.compile(loss=<span class="hljs-string">&apos;categorical_crossentropy&apos;</span>, optimizer=<span class="hljs-string">&apos;adam&apos;</span>, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>]) <span class="hljs-keyword">return</span> model
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E2A;&#x6A21;&#x578B;&#x521B;&#x5EFA;<code>KerasClassifier</code>&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4F1A;&#x4F20;&#x9012;&#x5230;<code>fit()</code>&#x51FD;&#x6570;&#x4E2D;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x8BAD;&#x7EC3;&#x6B21;&#x6570;<code>nb_epoch</code>&#x8BBE;&#x6210;150&#xFF0C;&#x6279;&#x5C3A;&#x5BF8;<code>batch_size</code>&#x8BBE;&#x6210;5&#xFF0C;<code>verbose</code>&#x8BBE;&#x6210;0&#x4EE5;&#x5173;&#x95ED;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-python">estimator = KerasClassifier(build_fn=baseline_model, nb_epoch=<span class="hljs-number">200</span>, batch_size=<span class="hljs-number">5</span>, verbose=<span class="hljs-number">0</span>)
+</code></pre>
+<h4 id="107-&#x7528;k&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;">10.7 &#x7528;K&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;</h4>
 <p>&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;&#x6548;&#x679C;&#x4E86;&#x3002;scikit-learn&#x6709;&#x5F88;&#x591A;&#x79CD;&#x529E;&#x6CD5;&#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5C31;&#x662F;K&#x6298;&#x68C0;&#x9A8C;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x8BBE;&#x5B9A;&#x6A21;&#x578B;&#x7684;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#xFF1A;K&#x8BBE;&#x4E3A;10&#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#x5F88;&#x597D;&#xFF09;&#xFF0C;&#x5728;&#x5206;&#x5272;&#x524D;&#x968F;&#x673A;&#x91CD;&#x6392;&#x6570;&#x636E;&#xFF1A;</p>
-<pre><code>kfold = KFold(n=len(X), n_folds=10, shuffle=True, random_state=seed)
-</code></pre><p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x6570;&#x636E;&#x96C6;&#xFF08;<code>X</code>&#x548C;<code>dummy_y</code>&#xFF09;&#x4E0A;&#x7528;10&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#xFF08;<code>kfold</code>&#xFF09;&#x6D4B;&#x8BD5;&#x6027;&#x80FD;&#x4E86;&#x3002;&#x6A21;&#x578B;&#x9700;&#x8981;10&#x79D2;&#x949F;&#x5C31;&#x53EF;&#x4EE5;&#x8DD1;&#x5B8C;&#xFF0C;&#x6BCF;&#x6B21;&#x68C0;&#x9A8C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code>results = cross_val_score(estimator, X, dummy_y, cv=kfold)
-print(&quot;Accuracy: %.2f%% (%.2f%%)&quot; % (results.mean()*100, results.std()*100))
-</code></pre><p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x7684;&#x5747;&#x503C;&#x548C;&#x6807;&#x51C6;&#x5DEE;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x6A21;&#x578B;&#x7684;&#x9884;&#x6D4B;&#x80FD;&#x529B;&#xFF0C;&#x6548;&#x679C;&#x62D4;&#x7FA4;&#xFF1A;</p>
-<pre><code>Baseline: 95.33% (4.27%)
-</code></pre><h4 id="108-&#x603B;&#x7ED3;">10.8 &#x603B;&#x7ED3;</h4>
+<pre><code class="lang-python">kfold = KFold(n=len(X), n_folds=<span class="hljs-number">10</span>, shuffle=<span class="hljs-keyword">True</span>, random_state=seed)
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x6570;&#x636E;&#x96C6;&#xFF08;<code>X</code>&#x548C;<code>dummy_y</code>&#xFF09;&#x4E0A;&#x7528;10&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#xFF08;<code>kfold</code>&#xFF09;&#x6D4B;&#x8BD5;&#x6027;&#x80FD;&#x4E86;&#x3002;&#x6A21;&#x578B;&#x9700;&#x8981;10&#x79D2;&#x949F;&#x5C31;&#x53EF;&#x4EE5;&#x8DD1;&#x5B8C;&#xFF0C;&#x6BCF;&#x6B21;&#x68C0;&#x9A8C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-python">results = cross_val_score(estimator, X, dummy_y, cv=kfold)
+print(<span class="hljs-string">&quot;Accuracy: %.2f%% (%.2f%%)&quot;</span> % (results.mean()*<span class="hljs-number">100</span>, results.std()*<span class="hljs-number">100</span>))
+</code></pre>
+<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x7684;&#x5747;&#x503C;&#x548C;&#x6807;&#x51C6;&#x5DEE;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x6A21;&#x578B;&#x7684;&#x9884;&#x6D4B;&#x80FD;&#x529B;&#xFF0C;&#x6548;&#x679C;&#x62D4;&#x7FA4;&#xFF1A;</p>
+<pre><code class="lang-python">Baseline: <span class="hljs-number">95.33</span>% (<span class="hljs-number">4.27</span>%)
+</code></pre>
+<h4 id="108-&#x603B;&#x7ED3;">10.8 &#x603B;&#x7ED3;</h4>
 <p>&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x4F7F;&#x7528;Keras&#x5F00;&#x53D1;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x9879;&#x76EE;&#x3002;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x4F55;&#x5BFC;&#x5165;&#x6570;&#x636E;</li>
@@ -558,7 +659,7 @@ print(&quot;Accuracy: %.2f%% (%.2f%%)&quot; % (results.mean()*100, results.std()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第10章 项目：多类花朵分类","level":"1.6.5","depth":2,"next":{"title":"第11章 项目：声呐返回值分类","level":"1.6.6","depth":2,"path":"3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.md","ref":"3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.md","articles":[]},"previous":{"title":"第9章 使用Scikit-Learn调用Keras的模型","level":"1.6.4","depth":2,"path":"3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md","ref":"3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md","mtime":"2017-11-12T06:23:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-12T06:38:02.473Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第10章 项目：多类花朵分类","level":"1.6.5","depth":2,"next":{"title":"第11章 项目：声呐返回值分类","level":"1.6.6","depth":2,"path":"3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.md","ref":"3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.md","articles":[]},"previous":{"title":"第9章 使用Scikit-Learn调用Keras的模型","level":"1.6.4","depth":2,"path":"3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md","ref":"3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"katex":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md","mtime":"2017-11-13T06:44:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T06:57:06.236Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

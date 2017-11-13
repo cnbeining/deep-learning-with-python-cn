@@ -16,7 +16,7 @@ TensorFlow是开源数学计算引擎，由Google创造，用Apache 2.0协议发
 
 TF支持Python 2.7和3.3以上。安装很简单：
 
-```
+```bash
 sudo pip install TensorFlow
 ```
 
@@ -34,7 +34,7 @@ TF的计算是用图表示的：
 
 简单说一下TensorFlow：我们定义a和b两个浮点变量，定义一个表达式（c=a+b），将表达式变成函数，编译，进行计算：
 
-```
+```python
 import tensorflow as tf
 # declare two symbolic floating-point scalars
 a = tf.placeholder(tf.float32)
@@ -53,7 +53,7 @@ print(c)
 
 TensorFlow自带很多模型，可以直接调用：首先，看看TensorFlow的安装位置：
 
-```
+```python
 python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'
 ```
 
@@ -84,3 +84,4 @@ example目录带有MNIST数据集的例子，TensorFlow的网站也很有帮助�
 ##### 3.6.1 下一章
 
 下一章我们研究Keras：我们用这个库开发深度学习模型。
+

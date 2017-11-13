@@ -25,7 +25,7 @@
 
 Keras可以将数据自动分出一部分，每次训练后进行验证。在训练时用```validation_split```参数可以指定验证数据的比例，一般是总数据的20%或者33%。下面的代码在第七章上加入了自动验证：
 
-```
+```python
 # MLP with automatic validation set
 from keras.models import Sequential
 from keras.layers import Dense
@@ -49,7 +49,7 @@ model.fit(X, Y, validation_split=0.33, nb_epoch=150, batch_size=10)
 
 训练时，每轮会显示训练和测试数据的数据：
 
-```
+```python
 Epoch 145/150
 514/514 [==============================] - 0s - loss: 0.4885 - acc: 0.7743 - val_loss:
     0.5016 - val_acc: 0.7638
@@ -74,7 +74,7 @@ Epoch 150/150
 
 Keras也可以手工进行验证。我们定义一个```train_test_split```函数，将数据分成2：1的测试和验证数据集。在调用```fit()```方法时需要加入```validation_data```参数作为验证数据，数组的项目分别是输入和输出数据。
 
-```
+```python
 # MLP with manual validation set
 from keras.models import Sequential
 from keras.layers import Dense
@@ -102,7 +102,7 @@ model.fit(X_train, y_train, validation_data=(X_test,y_test), nb_epoch=150, batch
 
 和自动化验证一样，每轮训练后，Keras会输出训练和验证结果：
 
-```
+```python
 ...
 Epoch 145/150
 514/514 [==============================] - 0s - loss: 0.5001 - acc: 0.7685 - val_loss:
@@ -132,7 +132,7 @@ Epoch 150/150
 
 scikit-learn有```StratifiedKFold```类，我们用它把数据分成10组。抽样方法是分层抽样，尽可能保证每组数据量一致。然后我们在每组上训练模型，使用```verbose=0```参数关闭每轮的输出。训练后，Keras会输出模型的性能，并存储模型。最终，Keras输出性能的平均值和标准差，为性能估算提供更准确的估计：
 
-```
+```python
 # MLP for Pima Indians Dataset with 10-fold cross validation
 from keras.models import Sequential
 from keras.layers import Dense
@@ -143,29 +143,29 @@ seed = 7
 numpy.random.seed(seed)
 # load pima indians dataset
 dataset = numpy.loadtxt("pima-indians-diabetes.csv", delimiter=",")
-  # split into input (X) and output (Y) variables
+# split into input (X) and output (Y) variables
 X = dataset[:,0:8]
 Y = dataset[:,8]
 # define 10-fold cross validation test harness
 kfold = StratifiedKFold(y=Y, n_folds=10, shuffle=True, random_state=seed)
 cvscores = []
 for i, (train, test) in enumerate(kfold):
-  # create model
-model = Sequential()
-model.add(Dense(12, input_dim=8, init='uniform', activation='relu')) model.add(Dense(8, init='uniform', activation='relu'))
-model.add(Dense(1, init='uniform', activation='sigmoid'))
-# Compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) # Fit the model
+    # create model
+    model = Sequential()
+    model.add(Dense(12, input_dim=8, init='uniform', activation='relu')) model.add(Dense(8, init='uniform', activation='relu'))
+    model.add(Dense(1, init='uniform', activation='sigmoid'))
+    # Compile model
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) # Fit the model
 model.fit(X[train], Y[train], nb_epoch=150, batch_size=10, verbose=0)
-# evaluate the model
-scores = model.evaluate(X[test], Y[test], verbose=0)
-print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100)) cvscores.append(scores[1] * 100)
-print("%.2f%% (+/- %.2f%%)" % (numpy.mean(cvscores), numpy.std(cvscores)))
+    # evaluate the model
+    scores = model.evaluate(X[test], Y[test], verbose=0)
+    print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100)) cvscores.append(scores[1] * 100)
+    print("%.2f%% (+/- %.2f%%)" % (numpy.mean(cvscores), numpy.std(cvscores)))
 ```
 
 输出是：
 
-```
+```python
 acc: 77.92%
 acc: 79.22%
 acc: 76.62%

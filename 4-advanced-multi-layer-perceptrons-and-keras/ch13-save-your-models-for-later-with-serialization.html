@@ -1,0 +1,832 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第13章 用序列化保存模型 · 深度学习：Python教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Beining <i@cnbeining.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch14-keep-the-best-models-during-training-with-checkpointing.html" />
+    
+    
+    <link rel="prev" href="part4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.cnbeining.com/" target="_blank" class="custom-link">Beining's Blog</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/cnbeining/deep-learning-with-python-cn" target="_blank" class="custom-link">Github</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/cnbeining/deep-learning-with-python-cn/issues" target="_blank" class="custom-link">讨论区</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    封面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Preface.html">
+            
+                <a href="../Preface.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Preface-translator.html">
+            
+                <a href="../Preface-translator.html">
+            
+                    
+                    译者的话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../1-introduction/part1.html">
+            
+                <a href="../1-introduction/part1.html">
+            
+                    
+                    I 简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../1-introduction/ch1-welcome.html">
+            
+                <a href="../1-introduction/ch1-welcome.html">
+            
+                    
+                    第1章 深度学习入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../2-background/part2.html">
+            
+                <a href="../2-background/part2.html">
+            
+                    
+                    II 背景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../2-background/ch2-introduction-to-theano.html">
+            
+                <a href="../2-background/ch2-introduction-to-theano.html">
+            
+                    
+                    第2章 Theano入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../2-background/ch3-introduction-to-tensorflow.html">
+            
+                <a href="../2-background/ch3-introduction-to-tensorflow.html">
+            
+                    
+                    第3章 TensorFlow入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../2-background/ch4-introduction-to-keras.html">
+            
+                <a href="../2-background/ch4-introduction-to-keras.html">
+            
+                    
+                    第4章 Keras入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.html">
+            
+                <a href="../2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.html">
+            
+                    
+                    第5章 项目：在云上搭建机器学习环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../3-multi-layer-perceptrons/part3.html">
+            
+                <a href="../3-multi-layer-perceptrons/part3.html">
+            
+                    
+                    III 多层感知器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch6-crash-course-in-multi-layer-perceptrons.html">
+            
+                    
+                    第6章 多层感知器入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch7-develop-your-first-neural-network-with-keras.html">
+            
+                    
+                    第7章 使用Keras开发神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.html">
+            
+                    
+                    第8章 测试神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.html">
+            
+                    
+                    第9章 使用Scikit-Learn调用Keras的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.html">
+            
+                    
+                    第10章 项目：多类花朵分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch11-project-binary-classification-of-sonar-returns.html">
+            
+                    
+                    第11章 项目：声呐返回值分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.html">
+            
+                <a href="../3-multi-layer-perceptrons/ch12-project-regression-of-boston-house-prices.html">
+            
+                    
+                    第12章 项目：波士顿住房价格回归
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="part4.html">
+            
+                <a href="part4.html">
+            
+                    
+                    IV Keras与高级多层感知器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.1" data-path="ch13-save-your-models-for-later-with-serialization.html">
+            
+                <a href="ch13-save-your-models-for-later-with-serialization.html">
+            
+                    
+                    第13章 用序列化保存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                <a href="ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                    
+                    第14章 使用保存点保存最好的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                <a href="ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                    
+                    第15章 模型训练效果可视化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                <a href="ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                    
+                    第16章 使用Dropout正则化防止过拟合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                <a href="ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                    
+                    第17章 学习速度设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../5-convolutional-neural-networks/part5.html">
+            
+                <a href="../5-convolutional-neural-networks/part5.html">
+            
+                    
+                    V 卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第13章 用序列化保存模型</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x7B2C;13&#x7AE0;-&#x7528;&#x5E8F;&#x5217;&#x5316;&#x4FDD;&#x5B58;&#x6A21;&#x578B;">&#x7B2C;13&#x7AE0; &#x7528;&#x5E8F;&#x5217;&#x5316;&#x4FDD;&#x5B58;&#x6A21;&#x578B;</h3>
+<p>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x7684;&#x6A21;&#x578B;&#x6709;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x597D;&#x51E0;&#x5929;&#x624D;&#x80FD;&#x8BAD;&#x7EC3;&#x597D;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;SL&#x5927;&#x6CD5;&#x5C31;&#x5B8C;&#x86CB;&#x4E86;&#x3002;&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x5982;&#x4F55;&#x4FDD;&#x5B58;&#x548C;&#x52A0;&#x8F7D;&#x6A21;&#x578B;&#x3002;&#x672C;&#x7AE0;&#x5C06;&#xFF1A;</p>
+<ul>
+<li>&#x4F7F;&#x7528;HDF5&#x683C;&#x5F0F;&#x4FDD;&#x5B58;&#x6A21;&#x578B;</li>
+<li>&#x4F7F;&#x7528;JSON&#x683C;&#x5F0F;&#x4FDD;&#x5B58;&#x6A21;&#x578B;</li>
+<li>&#x4F7F;&#x7528;YAML&#x683C;&#x5F0F;&#x4FDD;&#x5B58;&#x6A21;&#x578B;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x5427;&#x3002;</p>
+<h4 id="131-&#x7B80;&#x4ECB;">13.1 &#x7B80;&#x4ECB;</h4>
+<p>Keras&#x4E2D;&#xFF0C;&#x6A21;&#x578B;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x6743;&#x91CD;&#x6570;&#x636E;&#x662F;&#x5206;&#x5F00;&#x7684;&#xFF1A;&#x6743;&#x91CD;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x662F;HDF5&#xFF0C;&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#x4FDD;&#x5B58;&#x6570;&#x5B57;&#x77E9;&#x9635;&#x6548;&#x7387;&#x5F88;&#x9AD8;&#x3002;&#x6A21;&#x578B;&#x7684;&#x7ED3;&#x6784;&#x7528;JSON&#x6216;YAML&#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x5305;&#x62EC;&#x5982;&#x4F55;&#x624B;&#x5DE5;&#x4FEE;&#x6539;HDF5&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x578B;&#x662F;&#x7B2C;7&#x7AE0;&#x7684;&#x76AE;&#x9A6C;&#x4EBA;&#x7CD6;&#x5C3F;&#x75C5;&#x6A21;&#x578B;&#x3002;</p>
+<h5 id="1311-hdf5&#x6587;&#x4EF6;">13.1.1 HDF5&#x6587;&#x4EF6;</h5>
+<p>&#x5206;&#x5C42;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x7248;&#x672C;5&#xFF08;HDF5&#xFF09;&#x53EF;&#x4EE5;&#x9AD8;&#x6548;&#x4FDD;&#x5B58;&#x5927;&#x5B9E;&#x6570;&#x77E9;&#x9635;&#xFF0C;&#x4F8B;&#x5982;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x6743;&#x91CD;&#x3002;HDF5&#x7684;&#x5305;&#x9700;&#x8981;&#x5B89;&#x88C5;&#xFF1A;</p>
+<pre><code class="lang-python">sudo pip install h5py
+</code></pre>
+<h4 id="132-&#x4F7F;&#x7528;json&#x4FDD;&#x5B58;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;">13.2 &#x4F7F;&#x7528;JSON&#x4FDD;&#x5B58;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;</h4>
+<p>JSON&#x7684;&#x683C;&#x5F0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;Keras&#x53EF;&#x4EE5;&#x7528;<code>to_json()</code>&#x628A;&#x6A21;&#x578B;&#x5BFC;&#x51FA;&#x4E3A;JSON&#x683C;&#x5F0F;&#xFF0C;&#x518D;&#x7528;<code>model_from_json()</code>&#x52A0;&#x8F7D;&#x56DE;&#x6765;&#x3002;</p>
+<pre><code class="lang-save_weights()```&#x548C;```load_weights()```&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x548C;&#x52A0;&#x8F7D;&#x6A21;&#x578B;&#x6743;&#x91CD;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x628A;&#x4E4B;&#x524D;&#x7684;&#x6A21;&#x578B;&#x4FDD;&#x5B58;&#x5230;JSON&#x6587;&#x4EF6;```model.json```&#xFF0C;&#x6743;&#x91CD;&#x4FDD;&#x5B58;&#x5230;HDF5&#x6587;&#x4EF6;```model.h5```&#xFF0C;&#x7136;&#x540E;&#x52A0;&#x8F7D;&#x56DE;&#x6765;&#x3002;">
+&#x6A21;&#x578B;&#x548C;&#x6743;&#x91CD;&#x52A0;&#x8F7D;&#x540E;&#x9700;&#x8981;&#x7F16;&#x8BD1;&#x4E00;&#x6B21;&#xFF0C;&#x8BA9;Keras&#x6B63;&#x786E;&#x8C03;&#x7528;&#x540E;&#x7AEF;&#x3002;&#x6A21;&#x578B;&#x7684;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;&#x548C;&#x4E4B;&#x524D;&#x4E00;&#x81F4;&#xFF1A;
+
+&#x5BFC;&#x51FA;&#xFF1A;
+
+```python
+# MLP for Pima Indians Dataset serialize to JSON and HDF5
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.models import model_from_json
+import numpy
+import os
+# fix random seed for reproducibility
+seed = 7
+numpy.random.seed(seed)
+# load pima indians dataset
+dataset = numpy.loadtxt(&quot;pima-indians-diabetes.csv&quot;, delimiter=&quot;,&quot;)
+# split into input (X) and output (Y) variables
+X = dataset[:,0:8]
+Y = dataset[:,8]
+# create model
+model = Sequential()
+model.add(Dense(12, input_dim=8, init=&apos;uniform&apos;, activation=&apos;relu&apos;)) model.add(Dense(8, init=&apos;uniform&apos;, activation=&apos;relu&apos;))
+model.add(Dense(1, init=&apos;uniform&apos;, activation=&apos;sigmoid&apos;))
+# Compile model
+model.compile(loss=&apos;binary_crossentropy&apos;, optimizer=&apos;adam&apos;, metrics=[&apos;accuracy&apos;]) # Fit the model
+model.fit(X, Y, nb_epoch=150, batch_size=10, verbose=0)
+# evaluate the model
+scores = model.evaluate(X, Y, verbose=0)
+print(&quot;%s: %.2f%%&quot; % (model.metrics_names[1], scores[1]*100))
+# serialize model to JSON
+model_json = model.to_json()
+with open(&quot;model.json&quot;, &quot;w&quot;) as json_file:
+    json_file.write(model_json)
+# serialize weights to HDF5
+model.save_weights(&quot;model.h5&quot;)
+print(&quot;Saved model to disk&quot;)
+</code></pre>
+<p>&#x5BFC;&#x5165;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># later...</span>
+<span class="hljs-comment"># load json and create model</span>
+<span class="hljs-comment"># MLP for Pima Indians Dataset serialize to JSON and HDF5</span>
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> model_from_json
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">import</span> os
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
+numpy.random.seed(seed)
+<span class="hljs-comment"># load pima indians dataset</span>
+dataset = numpy.loadtxt(<span class="hljs-string">&quot;pima-indians-diabetes.csv&quot;</span>, delimiter=<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">8</span>]
+Y = dataset[:,<span class="hljs-number">8</span>]
+<span class="hljs-comment"># create model</span>
+model = Sequential()
+model.add(Dense(<span class="hljs-number">12</span>, input_dim=<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+model.add(Dense(<span class="hljs-number">1</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+<span class="hljs-comment"># Compile model</span>
+model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=<span class="hljs-string">&apos;adam&apos;</span>, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>]) <span class="hljs-comment"># Fit the model</span>
+model.fit(X, Y, nb_epoch=<span class="hljs-number">150</span>, batch_size=<span class="hljs-number">10</span>, verbose=<span class="hljs-number">0</span>)
+<span class="hljs-comment"># evaluate the model</span>
+scores = model.evaluate(X, Y, verbose=<span class="hljs-number">0</span>)
+print(<span class="hljs-string">&quot;%s: %.2f%%&quot;</span> % (model.metrics_names[<span class="hljs-number">1</span>], scores[<span class="hljs-number">1</span>]*<span class="hljs-number">100</span>))
+<span class="hljs-comment"># serialize model to JSON</span>
+model_json = model.to_json()
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;model.json&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> json_file:
+    json_file.write(model_json)
+<span class="hljs-comment"># serialize weights to HDF5</span>
+model.save_weights(<span class="hljs-string">&quot;model.h5&quot;</span>)
+print(<span class="hljs-string">&quot;Saved model to disk&quot;</span>)
+<span class="hljs-comment"># later...</span>
+<span class="hljs-comment"># load json and create model</span>
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x3002;&#x5BFC;&#x5165;&#x7684;&#x6A21;&#x578B;&#x548C;&#x4E4B;&#x524D;&#x5BFC;&#x51FA;&#x65F6;&#x4E00;&#x81F4;&#xFF1A;</p>
+<pre><code class="lang-python">acc: <span class="hljs-number">79.56</span>%
+Saved model to disk
+Loaded model <span class="hljs-keyword">from</span> disk
+acc: <span class="hljs-number">79.56</span>%
+</code></pre>
+<p>JSON&#x6587;&#x4EF6;&#x7C7B;&#x4F3C;&#xFF1A;</p>
+<pre><code class="lang-python">{
+    <span class="hljs-string">&quot;class_name&quot;</span>: <span class="hljs-string">&quot;Sequential&quot;</span>,
+    <span class="hljs-string">&quot;config&quot;</span>: [{
+            <span class="hljs-string">&quot;class_name&quot;</span>: <span class="hljs-string">&quot;Dense&quot;</span>,
+            <span class="hljs-string">&quot;config&quot;</span>: {
+                <span class="hljs-string">&quot;W_constraint&quot;</span>: null,
+                <span class="hljs-string">&quot;b_constraint&quot;</span>: null,
+                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;dense_1&quot;</span>,
+                <span class="hljs-string">&quot;output_dim&quot;</span>: <span class="hljs-number">12</span>,
+                <span class="hljs-string">&quot;activity_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;trainable&quot;</span>: true,
+                <span class="hljs-string">&quot;init&quot;</span>: <span class="hljs-string">&quot;uniform&quot;</span>,
+                <span class="hljs-string">&quot;input_dtype&quot;</span>: <span class="hljs-string">&quot;float32&quot;</span>,
+                <span class="hljs-string">&quot;input_dim&quot;</span>: <span class="hljs-number">8</span>,
+                <span class="hljs-string">&quot;b_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;W_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;activation&quot;</span>: <span class="hljs-string">&quot;relu&quot;</span>,
+                <span class="hljs-string">&quot;batch_input_shape&quot;</span>: [
+                    null,
+                    <span class="hljs-number">8</span>
+                ]
+            }
+        },
+        {
+            <span class="hljs-string">&quot;class_name&quot;</span>: <span class="hljs-string">&quot;Dense&quot;</span>,
+            <span class="hljs-string">&quot;config&quot;</span>: {
+                <span class="hljs-string">&quot;W_constraint&quot;</span>: null,
+                <span class="hljs-string">&quot;b_constraint&quot;</span>: null,
+                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;dense_2&quot;</span>,
+                <span class="hljs-string">&quot;activity_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;trainable&quot;</span>: true,
+                <span class="hljs-string">&quot;init&quot;</span>: <span class="hljs-string">&quot;uniform&quot;</span>,
+                <span class="hljs-string">&quot;input_dim&quot;</span>: null,
+                <span class="hljs-string">&quot;b_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;W_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;activation&quot;</span>: <span class="hljs-string">&quot;relu&quot;</span>,
+                <span class="hljs-string">&quot;output_dim&quot;</span>: <span class="hljs-number">8</span>
+            }
+        },
+        {
+            <span class="hljs-string">&quot;class_name&quot;</span>: <span class="hljs-string">&quot;Dense&quot;</span>,
+            <span class="hljs-string">&quot;config&quot;</span>: {
+                <span class="hljs-string">&quot;W_constraint&quot;</span>: null,
+                <span class="hljs-string">&quot;b_constraint&quot;</span>: null,
+                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;dense_3&quot;</span>,
+                <span class="hljs-string">&quot;activity_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;trainable&quot;</span>: true,
+                <span class="hljs-string">&quot;init&quot;</span>: <span class="hljs-string">&quot;uniform&quot;</span>,
+                <span class="hljs-string">&quot;input_dim&quot;</span>: null,
+                <span class="hljs-string">&quot;b_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;W_regularizer&quot;</span>: null,
+                <span class="hljs-string">&quot;activation&quot;</span>: <span class="hljs-string">&quot;sigmoid&quot;</span>,
+                <span class="hljs-string">&quot;output_dim&quot;</span>: <span class="hljs-number">1</span>
+            }
+        }
+    ]
+}
+</code></pre>
+<h4 id="133-&#x4F7F;&#x7528;yaml&#x4FDD;&#x5B58;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;">13.3 &#x4F7F;&#x7528;YAML&#x4FDD;&#x5B58;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;</h4>
+<p>&#x548C;&#x4E4B;&#x524D;JSON&#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x53D8;&#x6210;YAML&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x51FD;&#x6570;&#x53D8;&#x6210;&#x4E86;<code>to_yaml()</code>&#x548C;<code>model_from_yaml()</code>&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># MLP for Pima Indians Dataset serialize to YAML and HDF5</span>
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> model_from_yaml
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">import</span> os
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
+numpy.random.seed(seed)
+<span class="hljs-comment"># load pima indians dataset</span>
+dataset = numpy.loadtxt(<span class="hljs-string">&quot;pima-indians-diabetes.csv&quot;</span>, delimiter=<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">8</span>]
+Y = dataset[:,<span class="hljs-number">8</span>]
+<span class="hljs-comment"># create model</span>
+model = Sequential()
+model.add(Dense(<span class="hljs-number">12</span>, input_dim=<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+model.add(Dense(<span class="hljs-number">1</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+<span class="hljs-comment"># Compile model</span>
+model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=<span class="hljs-string">&apos;adam&apos;</span>, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>]) <span class="hljs-comment"># Fit the model</span>
+model.fit(X, Y, nb_epoch=<span class="hljs-number">150</span>, batch_size=<span class="hljs-number">10</span>, verbose=<span class="hljs-number">0</span>)
+<span class="hljs-comment"># evaluate the model</span>
+scores = model.evaluate(X, Y, verbose=<span class="hljs-number">0</span>)
+print(<span class="hljs-string">&quot;%s: %.2f%%&quot;</span> % (model.metrics_names[<span class="hljs-number">1</span>], scores[<span class="hljs-number">1</span>]*<span class="hljs-number">100</span>))
+<span class="hljs-comment"># serialize model to YAML</span>
+model_yaml = model.to_yaml()
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;model.yaml&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> yaml_file:
+    yaml_file.write(model_yaml)
+<span class="hljs-comment"># serialize weights to HDF5</span>
+model.save_weights(<span class="hljs-string">&quot;model.h5&quot;</span>)
+print(<span class="hljs-string">&quot;Saved model to disk&quot;</span>)
+
+
+<span class="hljs-comment"># later...</span>
+<span class="hljs-comment"># load YAML and create model</span>
+yaml_file = open(<span class="hljs-string">&apos;model.yaml&apos;</span>, <span class="hljs-string">&apos;r&apos;</span>) loaded_model_yaml = yaml_file.read() yaml_file.close()
+loaded_model = model_from_yaml(loaded_model_yaml) <span class="hljs-comment"># load weights into new model loaded_model.load_weights(&quot;model.h5&quot;) print(&quot;Loaded model from disk&quot;)</span>
+<span class="hljs-comment"># evaluate loaded model on test data</span>
+loaded_model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=<span class="hljs-string">&apos;rmsprop&apos;</span>, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>]) score = loaded_model.evaluate(X, Y, verbose=<span class="hljs-number">0</span>)
+<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;%s: %.2f%%&quot;</span> % (loaded_model.metrics_names[<span class="hljs-number">1</span>], score[<span class="hljs-number">1</span>]*<span class="hljs-number">100</span>)
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-python">acc: <span class="hljs-number">79.56</span>%
+Saved model to disk
+Loaded model <span class="hljs-keyword">from</span> disk
+acc: <span class="hljs-number">79.56</span>%
+</code></pre>
+<p>YAML&#x6587;&#x4EF6;&#x957F;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">class_name:</span> Sequential
+<span class="hljs-attr">config:</span>
+<span class="hljs-attr">- class_name:</span> Dense
+<span class="hljs-attr">  config:</span>
+<span class="hljs-attr">    W_constraint:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">    W_regularizer:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">   activation:</span> relu
+<span class="hljs-attr">    activity_regularizer:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">    b_constraint:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">    b_regularizer:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">    batch_input_shape:</span> <span class="hljs-type">!!python</span>/tuple [<span class="hljs-literal">null</span>, <span class="hljs-number">8</span>]
+<span class="hljs-attr">    init:</span> uniform
+<span class="hljs-attr">    input_dim:</span> <span class="hljs-number">8</span>
+<span class="hljs-attr">    input_dtype:</span> float32
+<span class="hljs-attr">    name:</span> dense_1
+<span class="hljs-attr">    output_dim:</span> <span class="hljs-number">12</span>
+<span class="hljs-attr">    trainable:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">- class_name:</span> Dense
+<span class="hljs-attr">  config:</span> {W_constraint: <span class="hljs-literal">null</span>, W_regularizer: <span class="hljs-literal">null</span>, activation: relu, activity_regularizer:
+      <span class="hljs-literal">null</span>,
+<span class="hljs-attr">    b_constraint:</span> <span class="hljs-literal">null</span>, b_regularizer: <span class="hljs-literal">null</span>, init: uniform, input_dim: <span class="hljs-literal">null</span>, name: dense_2,
+<span class="hljs-attr">    output_dim:</span> <span class="hljs-number">8</span>, trainable: <span class="hljs-literal">true</span>}
+<span class="hljs-attr">- class_name:</span> Dense
+<span class="hljs-attr">  config:</span> {W_constraint: <span class="hljs-literal">null</span>, W_regularizer: <span class="hljs-literal">null</span>, activation: sigmoid,
+<span class="hljs-attr">      activity_regularizer:</span> <span class="hljs-literal">null</span>,
+<span class="hljs-attr">    b_constraint:</span> <span class="hljs-literal">null</span>, b_regularizer: <span class="hljs-literal">null</span>, init: uniform, input_dim: <span class="hljs-literal">null</span>, name: dense_3,
+<span class="hljs-attr">    output_dim:</span> <span class="hljs-number">1</span>, trainable: <span class="hljs-literal">true</span>}
+</code></pre>
+<h4 id="134-&#x603B;&#x7ED3;">13.4 &#x603B;&#x7ED3;</h4>
+<p>&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;Keras&#x6A21;&#x578B;&#x3002;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x4F55;&#x7528;HDF5&#x4FDD;&#x5B58;&#x52A0;&#x8F7D;&#x6743;&#x91CD;</li>
+<li>&#x5982;&#x4F55;&#x7528;JSON&#x4FDD;&#x5B58;&#x52A0;&#x8F7D;&#x6A21;&#x578B;</li>
+<li>&#x5982;&#x4F55;&#x7528;YAML&#x4FDD;&#x5B58;&#x52A0;&#x8F7D;&#x6A21;&#x578B;</li>
+</ul>
+<h5 id="1341-&#x4E0B;&#x4E00;&#x7AE0;">13.4.1 &#x4E0B;&#x4E00;&#x7AE0;</h5>
+<p>&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x4E86;&#xFF1A;&#x4E0B;&#x4E00;&#x7AE0;&#x5173;&#x4E8E;&#x4F7F;&#x7528;&#x4FDD;&#x5B58;&#x70B9;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="part4.html" class="navigation navigation-prev " aria-label="Previous page: IV Keras与高级多层感知器">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch14-keep-the-best-models-during-training-with-checkpointing.html" class="navigation navigation-next " aria-label="Next page: 第14章 使用保存点保存最好的模型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第13章 用序列化保存模型","level":"1.7.1","depth":2,"next":{"title":"第14章 使用保存点保存最好的模型","level":"1.7.2","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.md","articles":[]},"previous":{"title":"IV Keras与高级多层感知器","level":"1.7","depth":1,"path":"4-advanced-multi-layer-perceptrons-and-keras/part4.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/part4.md","articles":[{"title":"第13章 用序列化保存模型","level":"1.7.1","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.md","articles":[]},{"title":"第14章 使用保存点保存最好的模型","level":"1.7.2","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.md","articles":[]},{"title":"第15章 模型训练效果可视化","level":"1.7.3","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.md","articles":[]},{"title":"第16章 使用Dropout正则化防止过拟合","level":"1.7.4","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.md","articles":[]},{"title":"第17章 学习速度设计","level":"1.7.5","depth":2,"path":"4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.md","ref":"4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["highlight","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"katex":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.md","mtime":"2017-11-13T06:47:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T06:57:06.236Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

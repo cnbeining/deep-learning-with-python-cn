@@ -32,7 +32,10 @@
         "pageNumbers": false,
         "paperSize": "a4"
     },
-    "plugins": [],
+    "plugins": [
+        "highlight",
+        "katex"
+    ],
     "title": "深度学习：Python教程",
     "variables": {}
 }

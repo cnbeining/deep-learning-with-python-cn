@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
@@ -371,6 +375,90 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.html">
+            
+                    
+                    第13章 用序列化保存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                    
+                    第14章 使用保存点保存最好的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                    
+                    第15章 模型训练效果可视化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                    
+                    第16章 使用Dropout正则化防止过拟合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                    
+                    第17章 学习速度设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../5-convolutional-neural-networks/part5.html">
+            
+                <a href="../5-convolutional-neural-networks/part5.html">
+            
+                    
+                    V 卷积神经网络
+            
+                </a>
+            
+
+            
         </li>
     
 
@@ -435,52 +523,54 @@
 <p>Keras&#x4E3A;scikit-learn&#x5C01;&#x88C5;&#x4E86;<code>KerasClassifier</code>&#x548C;<code>KerasRegressor</code>&#x3002;&#x672C;&#x7AE0;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x7B2C;7&#x7AE0;&#x7684;&#x6A21;&#x578B;&#x3002;</p>
 <h4 id="92-&#x4F7F;&#x7528;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x68C0;&#x9A8C;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;">9.2 &#x4F7F;&#x7528;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x68C0;&#x9A8C;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;</h4>
 <p>Keras&#x7684;<code>KerasClassifier</code>&#x548C;<code>KerasRegressor</code>&#x4E24;&#x4E2A;&#x7C7B;&#x63A5;&#x53D7;<code>build_fn</code>&#x53C2;&#x6570;&#xFF0C;&#x4F20;&#x5165;&#x7F16;&#x8BD1;&#x597D;&#x7684;&#x6A21;&#x578B;&#x3002;&#x6211;&#x4EEC;&#x52A0;&#x5165;<code>nb_epoch=150</code>&#x548C;<code>batch_size=10</code>&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x4F1A;&#x4F20;&#x5165;&#x6A21;&#x578B;&#x7684;<code>fit()</code>&#x65B9;&#x6CD5;&#x3002;&#x6211;&#x4EEC;&#x7528;scikit-learn&#x7684;<code>StratifiedKFold</code>&#x7C7B;&#x8FDB;&#x884C;10&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#xFF0C;&#x6D4B;&#x8BD5;&#x6A21;&#x578B;&#x5728;&#x672A;&#x77E5;&#x6570;&#x636E;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;<code>cross_val_score()</code>&#x51FD;&#x6570;&#x68C0;&#x6D4B;&#x6A21;&#x578B;&#xFF0C;&#x6253;&#x5370;&#x7ED3;&#x679C;&#x3002;</p>
-<pre><code># MLP for Pima Indians Dataset with 10-fold cross validation via sklearn
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.wrappers.scikit_learn import KerasClassifier
-from sklearn.cross_validation import StratifiedKFold
-from sklearn.cross_validation import cross_val_score
-import numpy
-import pandas
-# Function to create model, required for KerasClassifier
-def create_model():
-# create model
-model = Sequential()
-model.add(Dense(12, input_dim=8, init=&apos;uniform&apos;, activation=&apos;relu&apos;)) model.add(Dense(8, init=&apos;uniform&apos;, activation=&apos;relu&apos;)) model.add(Dense(1, init=&apos;uniform&apos;, activation=&apos;sigmoid&apos;))
-  # Compile model
-model.compile(loss=&apos;binary_crossentropy&apos;, optimizer=&apos;adam&apos;, metrics=[&apos;accuracy&apos;]) return model
-# fix random seed for reproducibility
-seed = 7
+<pre><code class="lang-python"><span class="hljs-comment"># MLP for Pima Indians Dataset with 10-fold cross validation via sklearn</span>
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.wrappers.scikit_learn <span class="hljs-keyword">import</span> KerasClassifier
+<span class="hljs-keyword">from</span> sklearn.cross_validation <span class="hljs-keyword">import</span> StratifiedKFold
+<span class="hljs-keyword">from</span> sklearn.cross_validation <span class="hljs-keyword">import</span> cross_val_score
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">import</span> pandas
+<span class="hljs-comment"># Function to create model, required for KerasClassifier</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_model</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># create model</span>
+    model = Sequential()
+    model.add(Dense(<span class="hljs-number">12</span>, input_dim=<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">8</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">1</span>, init=<span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+    <span class="hljs-comment"># Compile model</span>
+    model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=<span class="hljs-string">&apos;adam&apos;</span>, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>]) <span class="hljs-keyword">return</span> model
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
 numpy.random.seed(seed)
-# load pima indians dataset
-dataset = numpy.loadtxt(&quot;pima-indians-diabetes.csv&quot;, delimiter=&quot;,&quot;)
-# split into input (X) and output (Y) variables
-X = dataset[:,0:8]
-Y = dataset[:,8]
-# create model
-model = KerasClassifier(build_fn=create_model, nb_epoch=150, batch_size=10)
-# evaluate using 10-fold cross validation
-kfold = StratifiedKFold(y=Y, n_folds=10, shuffle=True, random_state=seed)
+<span class="hljs-comment"># load pima indians dataset</span>
+dataset = numpy.loadtxt(<span class="hljs-string">&quot;pima-indians-diabetes.csv&quot;</span>, delimiter=<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">8</span>]
+Y = dataset[:,<span class="hljs-number">8</span>]
+<span class="hljs-comment"># create model</span>
+model = KerasClassifier(build_fn=create_model, nb_epoch=<span class="hljs-number">150</span>, batch_size=<span class="hljs-number">10</span>)
+<span class="hljs-comment"># evaluate using 10-fold cross validation</span>
+kfold = StratifiedKFold(y=Y, n_folds=<span class="hljs-number">10</span>, shuffle=<span class="hljs-keyword">True</span>, random_state=seed)
 results = cross_val_score(model, X, Y, cv=kfold)
 print(results.mean())
-</code></pre><p>&#x6BCF;&#x8F6E;&#x8BAD;&#x7EC3;&#x4F1A;&#x8F93;&#x51FA;&#x4E00;&#x6B21;&#x7ED3;&#x679C;&#xFF0C;&#x52A0;&#x4E0A;&#x6700;&#x7EC8;&#x7684;&#x5E73;&#x5747;&#x6027;&#x80FD;&#xFF1A;</p>
-<pre><code>...
-Epoch 145/150
-692/692 [==============================] - 0s - loss: 0.4671 - acc: 0.7803
-Epoch 146/150
-692/692 [==============================] - 0s - loss: 0.4661 - acc: 0.7847
-Epoch 147/150
-692/692 [==============================] - 0s - loss: 0.4581 - acc: 0.7803
-Epoch 148/150
-692/692 [==============================] - 0s - loss: 0.4657 - acc: 0.7688
-Epoch 149/150
-692/692 [==============================] - 0s - loss: 0.4660 - acc: 0.7659
-Epoch 150/150
-692/692 [==============================] - 0s - loss: 0.4574 - acc: 0.7702
-76/76 [==============================] - 0s
-0.756442244065
-</code></pre><p>&#x6BD4;&#x8D77;&#x624B;&#x5DE5;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F7F;&#x7528;scikit-learn&#x5BB9;&#x6613;&#x7684;&#x591A;&#x3002;</p>
+</code></pre>
+<p>&#x6BCF;&#x8F6E;&#x8BAD;&#x7EC3;&#x4F1A;&#x8F93;&#x51FA;&#x4E00;&#x6B21;&#x7ED3;&#x679C;&#xFF0C;&#x52A0;&#x4E0A;&#x6700;&#x7EC8;&#x7684;&#x5E73;&#x5747;&#x6027;&#x80FD;&#xFF1A;</p>
+<pre><code class="lang-python">...
+Epoch <span class="hljs-number">145</span>/<span class="hljs-number">150</span>
+<span class="hljs-number">692</span>/<span class="hljs-number">692</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.4671</span> - acc: <span class="hljs-number">0.7803</span>
+Epoch <span class="hljs-number">146</span>/<span class="hljs-number">150</span>
+<span class="hljs-number">692</span>/<span class="hljs-number">692</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.4661</span> - acc: <span class="hljs-number">0.7847</span>
+Epoch <span class="hljs-number">147</span>/<span class="hljs-number">150</span>
+<span class="hljs-number">692</span>/<span class="hljs-number">692</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.4581</span> - acc: <span class="hljs-number">0.7803</span>
+Epoch <span class="hljs-number">148</span>/<span class="hljs-number">150</span>
+<span class="hljs-number">692</span>/<span class="hljs-number">692</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.4657</span> - acc: <span class="hljs-number">0.7688</span>
+Epoch <span class="hljs-number">149</span>/<span class="hljs-number">150</span>
+<span class="hljs-number">692</span>/<span class="hljs-number">692</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.4660</span> - acc: <span class="hljs-number">0.7659</span>
+Epoch <span class="hljs-number">150</span>/<span class="hljs-number">150</span>
+<span class="hljs-number">692</span>/<span class="hljs-number">692</span> [==============================] - <span class="hljs-number">0</span>s - loss: <span class="hljs-number">0.4574</span> - acc: <span class="hljs-number">0.7702</span>
+<span class="hljs-number">76</span>/<span class="hljs-number">76</span> [==============================] - <span class="hljs-number">0</span>s
+<span class="hljs-number">0.756442244065</span>
+</code></pre>
+<p>&#x6BD4;&#x8D77;&#x624B;&#x5DE5;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F7F;&#x7528;scikit-learn&#x5BB9;&#x6613;&#x7684;&#x591A;&#x3002;</p>
 <h4 id="93-&#x4F7F;&#x7528;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x8C03;&#x6574;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x7684;&#x53C2;&#x6570;">9.3 &#x4F7F;&#x7528;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x8C03;&#x6574;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x7684;&#x53C2;&#x6570;</h4>
 <p>&#x4F7F;&#x7528;scikit-learn&#x5C01;&#x88C5;Keras&#x7684;&#x6A21;&#x578B;&#x5341;&#x5206;&#x7B80;&#x5355;&#x3002;&#x8FDB;&#x4E00;&#x6B65;&#x60F3;&#xFF1A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7ED9;<code>fit()</code>&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x53C2;&#x6570;&#xFF0C;<code>KerasClassifier</code>&#x7684;<code>build_fn</code>&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x3002;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x70B9;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x6574;&#x6A21;&#x578B;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x7528;&#x7F51;&#x683C;&#x641C;&#x7D22;&#x6D4B;&#x8BD5;&#x4E0D;&#x540C;&#x53C2;&#x6570;&#x7684;&#x6027;&#x80FD;&#xFF1A;<code>create_model()</code>&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4F20;&#x5165;<code>optimizer</code>&#x548C;<code>init</code>&#x53C2;&#x6570;&#xFF0C;&#x867D;&#x7136;&#x90FD;&#x6709;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x548C;&#x521D;&#x59CB;&#x6743;&#x91CD;&#x8C03;&#x6574;&#x7F51;&#x7EDC;&#x3002;&#x5177;&#x4F53;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x641C;&#x7D22;&#xFF1A;</p>
@@ -492,63 +582,65 @@ Epoch 150/150
 </ul>
 <p>&#x6240;&#x6709;&#x7684;&#x53C2;&#x6570;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#xFF0C;&#x4F20;&#x5165;scikit-learn&#x7684;<code>GridSearchCV</code>&#x7C7B;&#xFF1A;<code>GridSearchCV</code>&#x4F1A;&#x5BF9;&#x6BCF;&#x7EC4;&#x53C2;&#x6570;&#xFF08;2&#xD7;3&#xD7;3&#xD7;3&#xFF09;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x8FDB;&#x884C;3&#x6298;&#x4EA4;&#x53C9;&#x68C0;&#x9A8C;&#x3002;</p>
 <p>&#x8BA1;&#x7B97;&#x91CF;&#x5DE8;&#x5927;&#xFF1A;&#x8017;&#x65F6;&#x5DE8;&#x957F;&#x3002;&#x5982;&#x679C;&#x6A21;&#x578B;&#x5C0F;&#x8FD8;&#x53EF;&#x4EE5;&#x53D6;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;&#x8BD5;&#x8BD5;&#x3002;&#x7B2C;7&#x7AE0;&#x7684;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x7F51;&#x7EDC;&#x548C;&#x6570;&#x636E;&#x96C6;&#x90FD;&#x4E0D;&#x5927;&#xFF08;1000&#x4E2A;&#x6570;&#x636E;&#x5185;&#xFF0C;9&#x4E2A;&#x53C2;&#x6570;&#xFF09;&#x3002;&#x6700;&#x540E;scikit-learn&#x4F1A;&#x8F93;&#x51FA;&#x6700;&#x597D;&#x7684;&#x53C2;&#x6570;&#x548C;&#x6A21;&#x578B;&#xFF0C;&#x4EE5;&#x53CA;&#x5E73;&#x5747;&#x503C;&#x3002;</p>
-<pre><code># MLP for Pima Indians Dataset with grid search via sklearn
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.wrappers.scikit_learn import KerasClassifier
-from sklearn.grid_search import GridSearchCV
-import numpy
-import pandas
-# Function to create model, required for KerasClassifier
-def create_model(optimizer=&apos;rmsprop&apos;, init=&apos;glorot_uniform&apos;):
-# create model
-model = Sequential()
-model.add(Dense(12, input_dim=8, init=init, activation=&apos;relu&apos;)) model.add(Dense(8, init=init, activation=&apos;relu&apos;)) model.add(Dense(1, init=init, activation=&apos;sigmoid&apos;))
-  # Compile model
-model.compile(loss=&apos;binary_crossentropy&apos;, optimizer=optimizer, metrics=[&apos;accuracy&apos;]) return model
-# fix random seed for reproducibility
-seed = 7
+<pre><code class="lang-python"><span class="hljs-comment"># MLP for Pima Indians Dataset with grid search via sklearn</span>
+<span class="hljs-keyword">from</span> keras.models <span class="hljs-keyword">import</span> Sequential
+<span class="hljs-keyword">from</span> keras.layers <span class="hljs-keyword">import</span> Dense
+<span class="hljs-keyword">from</span> keras.wrappers.scikit_learn <span class="hljs-keyword">import</span> KerasClassifier
+<span class="hljs-keyword">from</span> sklearn.grid_search <span class="hljs-keyword">import</span> GridSearchCV
+<span class="hljs-keyword">import</span> numpy
+<span class="hljs-keyword">import</span> pandas
+<span class="hljs-comment"># Function to create model, required for KerasClassifier</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_model</span><span class="hljs-params">(optimizer=<span class="hljs-string">&apos;rmsprop&apos;</span>, init=<span class="hljs-string">&apos;glorot_uniform&apos;</span>)</span>:</span>
+    <span class="hljs-comment"># create model</span>
+    model = Sequential()
+    model.add(Dense(<span class="hljs-number">12</span>, input_dim=<span class="hljs-number">8</span>, init=init, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">8</span>, init=init, activation=<span class="hljs-string">&apos;relu&apos;</span>)) model.add(Dense(<span class="hljs-number">1</span>, init=init, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+    <span class="hljs-comment"># Compile model</span>
+    model.compile(loss=<span class="hljs-string">&apos;binary_crossentropy&apos;</span>, optimizer=optimizer, metrics=[<span class="hljs-string">&apos;accuracy&apos;</span>]) <span class="hljs-keyword">return</span> model
+<span class="hljs-comment"># fix random seed for reproducibility</span>
+seed = <span class="hljs-number">7</span>
 numpy.random.seed(seed)
-# load pima indians dataset
-dataset = numpy.loadtxt(&quot;pima-indians-diabetes.csv&quot;, delimiter=&quot;,&quot;)
-# split into input (X) and output (Y) variables
-X = dataset[:,0:8]
-Y = dataset[:,8]
-# create model
+<span class="hljs-comment"># load pima indians dataset</span>
+dataset = numpy.loadtxt(<span class="hljs-string">&quot;pima-indians-diabetes.csv&quot;</span>, delimiter=<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment"># split into input (X) and output (Y) variables</span>
+X = dataset[:,<span class="hljs-number">0</span>:<span class="hljs-number">8</span>]
+Y = dataset[:,<span class="hljs-number">8</span>]
+<span class="hljs-comment"># create model</span>
 model = KerasClassifier(build_fn=create_model)
-# grid search epochs, batch size and optimizer
-optimizers = [&apos;rmsprop&apos;, &apos;adam&apos;]
-init = [&apos;glorot_uniform&apos;, &apos;normal&apos;, &apos;uniform&apos;]
-epochs = numpy.array([50, 100, 150])
-batches = numpy.array([5, 10, 20])
+<span class="hljs-comment"># grid search epochs, batch size and optimizer</span>
+optimizers = [<span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;adam&apos;</span>]
+init = [<span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;uniform&apos;</span>]
+epochs = numpy.array([<span class="hljs-number">50</span>, <span class="hljs-number">100</span>, <span class="hljs-number">150</span>])
+batches = numpy.array([<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>])
 param_grid = dict(optimizer=optimizers, nb_epoch=epochs, batch_size=batches, init=init) grid = GridSearchCV(estimator=model, param_grid=param_grid)
 grid_result = grid.fit(X, Y)
-# summarize results
-print(&quot;Best: %f using %s&quot; % (grid_result.best_score_, grid_result.best_params_))
-for params, mean_score, scores in grid_result.grid_scores_:
-    print(&quot;%f (%f) with: %r&quot; % (scores.mean(), scores.std(), params))
-</code></pre><p>&#x7528;CPU&#x5DEE;&#x4E0D;&#x591A;&#x8981;5&#x5206;&#x949F;&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x3002;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4F7F;&#x7528;&#x5747;&#x5300;&#x5206;&#x5E03;&#x521D;&#x59CB;&#x5316;&#xFF0C;<code>rmsprop</code>&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#xFF0C;150&#x8F6E;&#xFF0C;&#x6279;&#x5C3A;&#x5BF8;&#x4E3A;5&#x65F6;&#x6548;&#x679C;&#x6700;&#x597D;&#xFF0C;&#x6B63;&#x786E;&#x7387;&#x7EA6;75%&#xFF1A;</p>
-<pre><code>Best: 0.751302 using {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
-0.653646 (0.031948) with: {&apos;init&apos;: &apos;glorot_uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 50, &apos;batch_size&apos;: 5}
-0.665365 (0.004872) with: {&apos;init&apos;: &apos;glorot_uniform&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 50, &apos;batch_size&apos;: 5}
-0.683594 (0.037603) with: {&apos;init&apos;: &apos;glorot_uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 100, &apos;batch_size&apos;: 5}
-0.709635 (0.034987) with: {&apos;init&apos;: &apos;glorot_uniform&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 100, &apos;batch_size&apos;: 5}
-0.699219 (0.009568) with: {&apos;init&apos;: &apos;glorot_uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
-0.725260 (0.008027) with: {&apos;init&apos;: &apos;glorot_uniform&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
-0.686198 (0.024774) with: {&apos;init&apos;: &apos;normal&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 50, &apos;batch_size&apos;: 5}
-0.718750 (0.014616) with: {&apos;init&apos;: &apos;normal&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 50, &apos;batch_size&apos;: 5}
-0.725260 (0.028940) with: {&apos;init&apos;: &apos;normal&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 100, &apos;batch_size&apos;: 5}
-0.727865 (0.028764) with: {&apos;init&apos;: &apos;normal&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 100, &apos;batch_size&apos;: 5}
-0.748698 (0.035849) with: {&apos;init&apos;: &apos;normal&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
-0.712240 (0.039623) with: {&apos;init&apos;: &apos;normal&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
-0.699219 (0.024910) with: {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 50, &apos;batch_size&apos;: 5}
-0.703125 (0.011500) with: {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 50, &apos;batch_size&apos;: 5}
-0.720052 (0.015073) with: {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 100, &apos;batch_size&apos;: 5}
-0.712240 (0.034987) with: {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 100, &apos;batch_size&apos;: 5}
-0.751302 (0.031466) with: {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;rmsprop&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
-0.734375 (0.038273) with: {&apos;init&apos;: &apos;uniform&apos;, &apos;optimizer&apos;: &apos;adam&apos;, &apos;nb_epoch&apos;: 150, &apos;batch_size&apos;: 5}
+<span class="hljs-comment"># summarize results</span>
+print(<span class="hljs-string">&quot;Best: %f using %s&quot;</span> % (grid_result.best_score_, grid_result.best_params_))
+<span class="hljs-keyword">for</span> params, mean_score, scores <span class="hljs-keyword">in</span> grid_result.grid_scores_:
+    print(<span class="hljs-string">&quot;%f (%f) with: %r&quot;</span> % (scores.mean(), scores.std(), params))
+</code></pre>
+<p>&#x7528;CPU&#x5DEE;&#x4E0D;&#x591A;&#x8981;5&#x5206;&#x949F;&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x3002;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4F7F;&#x7528;&#x5747;&#x5300;&#x5206;&#x5E03;&#x521D;&#x59CB;&#x5316;&#xFF0C;<code>rmsprop</code>&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#xFF0C;150&#x8F6E;&#xFF0C;&#x6279;&#x5C3A;&#x5BF8;&#x4E3A;5&#x65F6;&#x6548;&#x679C;&#x6700;&#x597D;&#xFF0C;&#x6B63;&#x786E;&#x7387;&#x7EA6;75%&#xFF1A;</p>
+<pre><code class="lang-python">Best: <span class="hljs-number">0.751302</span> using {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.653646</span> (<span class="hljs-number">0.031948</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">50</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.665365</span> (<span class="hljs-number">0.004872</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">50</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.683594</span> (<span class="hljs-number">0.037603</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">100</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.709635</span> (<span class="hljs-number">0.034987</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">100</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.699219</span> (<span class="hljs-number">0.009568</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.725260</span> (<span class="hljs-number">0.008027</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;glorot_uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.686198</span> (<span class="hljs-number">0.024774</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">50</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.718750</span> (<span class="hljs-number">0.014616</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">50</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.725260</span> (<span class="hljs-number">0.028940</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">100</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.727865</span> (<span class="hljs-number">0.028764</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">100</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.748698</span> (<span class="hljs-number">0.035849</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.712240</span> (<span class="hljs-number">0.039623</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;normal&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.699219</span> (<span class="hljs-number">0.024910</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">50</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.703125</span> (<span class="hljs-number">0.011500</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">50</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.720052</span> (<span class="hljs-number">0.015073</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">100</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.712240</span> (<span class="hljs-number">0.034987</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">100</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.751302</span> (<span class="hljs-number">0.031466</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;rmsprop&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
+<span class="hljs-number">0.734375</span> (<span class="hljs-number">0.038273</span>) <span class="hljs-keyword">with</span>: {<span class="hljs-string">&apos;init&apos;</span>: <span class="hljs-string">&apos;uniform&apos;</span>, <span class="hljs-string">&apos;optimizer&apos;</span>: <span class="hljs-string">&apos;adam&apos;</span>, <span class="hljs-string">&apos;nb_epoch&apos;</span>: <span class="hljs-number">150</span>, <span class="hljs-string">&apos;batch_size&apos;</span>: <span class="hljs-number">5</span>}
 ...
-</code></pre><h4 id="94-&#x603B;&#x7ED3;">9.4 &#x603B;&#x7ED3;</h4>
+</code></pre>
+<h4 id="94-&#x603B;&#x7ED3;">9.4 &#x603B;&#x7ED3;</h4>
 <p>&#x672C;&#x7AE0;&#x5173;&#x4E8E;&#x4F7F;&#x7528;scikit-learn&#x5C01;&#x88C5;&#x5E76;&#x6D4B;&#x8BD5;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x6027;&#x80FD;&#x3002;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x4F55;&#x4F7F;&#x7528;scikit-learn&#x5C01;&#x88C5;Keras&#x6A21;&#x578B;</li>
@@ -601,7 +693,7 @@ for params, mean_score, scores in grid_result.grid_scores_:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第9章 使用Scikit-Learn调用Keras的模型","level":"1.6.4","depth":2,"next":{"title":"第10章 项目：多类花朵分类","level":"1.6.5","depth":2,"path":"3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md","ref":"3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md","articles":[]},"previous":{"title":"第8章 测试神经网络","level":"1.6.3","depth":2,"path":"3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.md","ref":"3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md","mtime":"2017-11-12T06:21:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-12T06:38:02.473Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第9章 使用Scikit-Learn调用Keras的模型","level":"1.6.4","depth":2,"next":{"title":"第10章 项目：多类花朵分类","level":"1.6.5","depth":2,"path":"3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md","ref":"3-multi-layer-perceptrons/ch10-project-multiclass-classification-of-flower-species.md","articles":[]},"previous":{"title":"第8章 测试神经网络","level":"1.6.3","depth":2,"path":"3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.md","ref":"3-multi-layer-perceptrons/ch8-evaluate-the-performance-of-deep-learning-models.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"katex":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"3-multi-layer-perceptrons/ch9-use-keras-models-with-scikit-learn-for-general-machine-learning.md","mtime":"2017-11-13T06:44:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T06:57:06.236Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
@@ -371,6 +375,90 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch13-save-your-models-for-later-with-serialization.html">
+            
+                    
+                    第13章 用序列化保存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch14-keep-the-best-models-during-training-with-checkpointing.html">
+            
+                    
+                    第14章 使用保存点保存最好的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch15-understand-model-behavior-during-training-by-plotting-history.html">
+            
+                    
+                    第15章 模型训练效果可视化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch16-reduce-overfitting-with-dropout-regularization.html">
+            
+                    
+                    第16章 使用Dropout正则化防止过拟合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                <a href="../4-advanced-multi-layer-perceptrons-and-keras/ch17-lift-performance-with-learning-rate-schedules.html">
+            
+                    
+                    第17章 学习速度设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../5-convolutional-neural-networks/part5.html">
+            
+                <a href="../5-convolutional-neural-networks/part5.html">
+            
+                    
+                    V 卷积神经网络
+            
+                </a>
+            
+
+            
         </li>
     
 
@@ -460,11 +548,11 @@ theano
 <pre><code>Using TensorFlow backend.
 tensorflow
 </code></pre><h4 id="44-&#x4F7F;&#x7528;keras&#x642D;&#x5EFA;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;">4.4 &#x4F7F;&#x7528;Keras&#x642D;&#x5EFA;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;</h4>
-<p>Keras&#x7684;&#x76EE;&#x6807;&#x5C31;&#x662F;&#x642D;&#x5EFA;&#x6A21;&#x578B;&#x3002;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x6A21;&#x578B;&#x662F;<code>Sequential</code>&#xFF1A;&#x4E0D;&#x540C;&#x5C42;&#x7684;&#x53E0;&#x52A0;&#x3002;&#x6A21;&#x578B;&#x521B;&#x5EFA;&#x540E;&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;&#xFF0C;&#x8C03;&#x7528;&#x540E;&#x7AEF;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x548C;&#x4F18;&#x5316;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>Keras&#x7684;&#x76EE;&#x6807;&#x5C31;&#x662F;&#x642D;&#x5EFA;&#x6A21;&#x578B;&#x3002;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x6A21;&#x578B;&#x662F;<code>Sequential</code>&#xFF1A;&#x4E0D;&#x540C;&#x5C42;&#x7684;&#x53E0;&#x52A0;&#x3002;&#x6A21;&#x578B;&#x521B;&#x5EFA;&#x540E;&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;&#xFF0C;&#x8C03;&#x7528;&#x540E;&#x7AEF;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x548C;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x3002;</p>
 <p>&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x6A21;&#x578B;&#x9700;&#x8981;&#x5BFC;&#x5165;&#x6570;&#x636E;&#xFF1A;&#x53EF;&#x4EE5;&#x4E00;&#x6279;&#x6279;&#x52A0;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6027;&#x5168;&#x52A0;&#x5165;&#x3002;&#x6240;&#x6709;&#x7684;&#x8BA1;&#x7B97;&#x5728;&#x8FD9;&#x6B65;&#x8FDB;&#x884C;&#x3002;&#x8BAD;&#x7EC3;&#x540E;&#x7684;&#x6A21;&#x578B;&#x5C31;&#x53EF;&#x4EE5;&#x505A;&#x9884;&#x6D4B;&#x6216;&#x5206;&#x7C7B;&#x4E86;&#x3002;&#x5927;&#x4F53;&#x4E0A;&#x7684;&#x6B65;&#x9AA4;&#x662F;&#xFF1A;</p>
 <ol>
 <li>&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#xFF1A;&#x521B;&#x5EFA;<code>Sequential</code>&#x6A21;&#x578B;&#xFF0C;&#x52A0;&#x5165;&#x6BCF;&#x4E00;&#x5C42;</li>
-<li>&#x7F16;&#x8BD1;&#x6A21;&#x578B;&#xFF1A;&#x6307;&#x5B9A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x548C;&#x4F18;&#x5316;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x7684;<code>compile()</code>&#x65B9;&#x6CD5;</li>
+<li>&#x7F16;&#x8BD1;&#x6A21;&#x578B;&#xFF1A;&#x6307;&#x5B9A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x548C;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x7684;<code>compile()</code>&#x65B9;&#x6CD5;</li>
 <li>&#x62DF;&#x5408;&#x6570;&#x636E;&#xFF1A;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x7684;<code>fit()</code>&#x65B9;&#x6CD5;&#x62DF;&#x5408;&#x6570;&#x636E;</li>
 <li>&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#xFF1A;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x7684;<code>evaluate()</code> &#x6216; <code>predict()</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x9884;&#x6D4B;</li>
 </ol>
@@ -520,7 +608,7 @@ tensorflow
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4章 Keras入门","level":"1.5.3","depth":2,"next":{"title":"第5章 项目：在云上搭建机器学习环境","level":"1.5.4","depth":2,"path":"2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.md","ref":"2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.md","articles":[]},"previous":{"title":"第3章 TensorFlow入门","level":"1.5.2","depth":2,"path":"2-background/ch3-introduction-to-tensorflow.md","ref":"2-background/ch3-introduction-to-tensorflow.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"2-background/ch4-introduction-to-keras.md","mtime":"2017-11-10T22:44:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-12T06:38:02.473Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4章 Keras入门","level":"1.5.3","depth":2,"next":{"title":"第5章 项目：在云上搭建机器学习环境","level":"1.5.4","depth":2,"path":"2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.md","ref":"2-background/ch5-project-develop-large-models-on-gpus-cheaply-in-the-cloud.md","articles":[]},"previous":{"title":"第3章 TensorFlow入门","level":"1.5.2","depth":2,"path":"2-background/ch3-introduction-to-tensorflow.md","ref":"2-background/ch3-introduction-to-tensorflow.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"katex":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Beining <i@cnbeining.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"深度学习：Python教程","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Beining's Blog":"https://www.cnbeining.com/","Github":"https://github.com/cnbeining/deep-learning-with-python-cn","讨论区":"https://github.com/cnbeining/deep-learning-with-python-cn/issues"}},"gitbook":"*","description":"使用Keras、Python、Theano和TensorFlow开发深度学习模型","extension":null},"file":{"path":"2-background/ch4-introduction-to-keras.md","mtime":"2017-11-13T06:43:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-13T06:57:06.236Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
