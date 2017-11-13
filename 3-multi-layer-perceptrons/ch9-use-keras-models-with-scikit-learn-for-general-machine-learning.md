@@ -21,7 +21,7 @@ Keras为scikit-learn封装了```KerasClassifier```和```KerasRegressor```。本�
 
 Keras的```KerasClassifier```和```KerasRegressor```两个类接受```build_fn```参数，传入编译好的模型。我们加入```nb_epoch=150```和```batch_size=10```这两个参数：这两个参数会传入模型的```fit()```方法。我们用scikit-learn的```StratifiedKFold```类进行10折交叉验证，测试模型在未知数据的性能，并使用```cross_val_score()```函数检测模型，打印结果。
 
-```
+```python
 # MLP for Pima Indians Dataset with 10-fold cross validation via sklearn
 from keras.models import Sequential
 from keras.layers import Dense
@@ -32,11 +32,11 @@ import numpy
 import pandas
 # Function to create model, required for KerasClassifier
 def create_model():
-# create model
-model = Sequential()
-model.add(Dense(12, input_dim=8, init='uniform', activation='relu')) model.add(Dense(8, init='uniform', activation='relu')) model.add(Dense(1, init='uniform', activation='sigmoid'))
-  # Compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) return model
+    # create model
+    model = Sequential()
+    model.add(Dense(12, input_dim=8, init='uniform', activation='relu')) model.add(Dense(8, init='uniform', activation='relu')) model.add(Dense(1, init='uniform', activation='sigmoid'))
+    # Compile model
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) return model
 # fix random seed for reproducibility
 seed = 7
 numpy.random.seed(seed)
@@ -55,7 +55,7 @@ print(results.mean())
 
 每轮训练会输出一次结果，加上最终的平均性能：
 
-```
+```python
 ...
 Epoch 145/150
 692/692 [==============================] - 0s - loss: 0.4671 - acc: 0.7803
@@ -90,7 +90,7 @@ Epoch 150/150
 
 计算量巨大：耗时巨长。如果模型小还可以取一部分数据试试。第7章的模型可以用，因为网络和数据集都不大（1000个数据内，9个参数）。最后scikit-learn会输出最好的参数和模型，以及平均值。
 
-```
+```python
 # MLP for Pima Indians Dataset with grid search via sklearn
 from keras.models import Sequential
 from keras.layers import Dense
@@ -100,11 +100,11 @@ import numpy
 import pandas
 # Function to create model, required for KerasClassifier
 def create_model(optimizer='rmsprop', init='glorot_uniform'):
-# create model
-model = Sequential()
-model.add(Dense(12, input_dim=8, init=init, activation='relu')) model.add(Dense(8, init=init, activation='relu')) model.add(Dense(1, init=init, activation='sigmoid'))
-  # Compile model
-model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy']) return model
+    # create model
+    model = Sequential()
+    model.add(Dense(12, input_dim=8, init=init, activation='relu')) model.add(Dense(8, init=init, activation='relu')) model.add(Dense(1, init=init, activation='sigmoid'))
+    # Compile model
+    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy']) return model
 # fix random seed for reproducibility
 seed = 7
 numpy.random.seed(seed)
@@ -130,7 +130,7 @@ for params, mean_score, scores in grid_result.grid_scores_:
 
 用CPU差不多要5分钟，结果如下。我们发现使用均匀分布初始化，```rmsprop```优化算法，150轮，批尺寸为5时效果最好，正确率约75%：
 
-```
+```python
 Best: 0.751302 using {'init': 'uniform', 'optimizer': 'rmsprop', 'nb_epoch': 150, 'batch_size': 5}
 0.653646 (0.031948) with: {'init': 'glorot_uniform', 'optimizer': 'rmsprop', 'nb_epoch': 50, 'batch_size': 5}
 0.665365 (0.004872) with: {'init': 'glorot_uniform', 'optimizer': 'adam', 'nb_epoch': 50, 'batch_size': 5}

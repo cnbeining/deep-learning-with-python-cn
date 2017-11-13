@@ -22,7 +22,7 @@
 
 先创建一个简单的神经网络试试看。导入所有的库和函数：
 
-```
+```python
 import numpy
 import pandas
 from keras.models import Sequential
@@ -37,7 +37,7 @@ from sklearn.pipeline import Pipeline
 
 初始化随机数种子，这样每次的结果都一样，帮助debug：
 
-```
+```python
 # fix random seed for reproducibility
 seed = 7
 numpy.random.seed(seed)
@@ -45,7 +45,7 @@ numpy.random.seed(seed)
 
 用pandas读入数据：前60列是输入变量（X），最后一列是输出变量（Y）。pandas处理带字符的数据比NumPy更容易。
 
-```
+```python
 # load dataset
 dataframe = pandas.read_csv("sonar.csv", header=None)
 dataset = dataframe.values
@@ -56,7 +56,7 @@ Y = dataset[:,60]
 
 输出变量现在是字符串：需要编码成数字0和1。scikit-learn的```LabelEncoder```可以做到：先将数据用```fit()```方法导入，然后用```transform()```函数编码，加入一列：
 
-```
+```python
 # encode class values as integers
 encoder = LabelEncoder()
 encoder.fit(Y)
@@ -67,7 +67,7 @@ encoded_Y = encoder.transform(Y)
 
 模型的权重是比较小的高斯随机数，激活函数是整流函数，输出层只有一个神经元，激活函数是S型函数，代表某个类的概率。损失函数还是对数损失函数（```binary_crossentropy```），这个函数适用于二分类问题。优化算法是Adam随机梯度下降，每轮收集模型的准确率。
 
-```
+```python
 # baseline model
 def create_baseline():
 # create model
@@ -79,7 +79,7 @@ def create_baseline():
 
 用scikit-learn测试一下模型。向```KerasClassifier```传入训练次数（默认值），关闭日志：
 
-```
+```python
 # evaluate model with standardized dataset
 estimator = KerasClassifier(build_fn=create_baseline, nb_epoch=100, batch_size=5, verbose=0)
 kfold = StratifiedKFold(y=encoded_Y, n_folds=10, shuffle=True, random_state=seed)
@@ -89,7 +89,7 @@ print("Results: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 
 输出内容是测试的平均数和标准差。
 
-```
+```python
 Baseline: 81.68% (5.67%)
 ```
 
@@ -103,7 +103,7 @@ scikit-learn的```StandardScaler```可以做到这点。不应该在整个数据
 
 scikit-learn的```Pipeline```可以直接做到这些。我们先定义一个```StandardScaler```，然后进行验证：
 
-```
+```python
 # evaluate baseline model with standardized dataset
 numpy.random.seed(seed)
 estimators = []
@@ -118,7 +118,7 @@ print("Standardized: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 
 结果如下，平均效果有一点进步。
 
-```
+```python
 Standardized: 84.07% (6.23%)
 ```
 
@@ -132,14 +132,14 @@ Standardized: 84.07% (6.23%)
 
 我们把之前的模型隐层的60个神经元减半到30个，这样神经网络需要挑选最重要的信息。之前的正则化有效果：我们也一并做一下.
 
-```
+```python
 # smaller model
 def create_smaller():
-# create model
-model = Sequential()
-model.add(Dense(30, input_dim=60, init='normal', activation='relu')) model.add(Dense(1, init='normal', activation='sigmoid'))
-  # Compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) return model
+    # create model
+    model = Sequential()
+    model.add(Dense(30, input_dim=60, init='normal', activation='relu')) model.add(Dense(1, init='normal', activation='sigmoid'))
+    # Compile model
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) return model
 numpy.random.seed(seed)
 estimators = []
 estimators.append(('standardize', StandardScaler()))
@@ -153,7 +153,7 @@ print("Smaller: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 
 结果如下。平均值有少许提升，方差减少很多：这么做果然有效，因为这次的训练时间只需要之前的一半！
 
-```
+```python
 Smaller: 84.61% (4.65%)
 ```
 
@@ -161,20 +161,20 @@ Smaller: 84.61% (4.65%)
 
 扩大网络后，神经网络更有可能提取关键特征，以非线性方式组合。我们对之前的网络简单修改一下：在原来的隐层后加入一层30个神经元的隐层。现在的网络是：
 
-```
+```python
 60 inputs -> [60 -> 30] -> 1 output
 ```
 
 我们希望在缩减信息前可以对所有的变量建模，和缩小网络时的想法类似。这次我们加一层，帮助网络挑选信息：
 
-```
+```python
 # larger model
 def create_larger():
-# create model
-model = Sequential()
-model.add(Dense(60, input_dim=60, init='normal', activation='relu')) model.add(Dense(30, init='normal', activation='relu')) model.add(Dense(1, init='normal', activation='sigmoid'))
-  # Compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) return model
+    # create model
+    model = Sequential()
+    model.add(Dense(60, input_dim=60, init='normal', activation='relu')) model.add(Dense(30, init='normal', activation='relu')) model.add(Dense(1, init='normal', activation='sigmoid'))
+      # Compile model
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) return model
 numpy.random.seed(seed)
 estimators = []
 estimators.append(('standardize', StandardScaler()))
@@ -188,7 +188,7 @@ print("Larger: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 
 这次的结果好了很多，几乎达到业界最优。
 
-```
+```python
 Larger: 86.47% (3.82%)
 ```
 
@@ -207,3 +207,4 @@ Larger: 86.47% (3.82%)
 ##### 11.5.1 下一章
 
 多分类和二分类介绍完了：下一章是回归问题。
+

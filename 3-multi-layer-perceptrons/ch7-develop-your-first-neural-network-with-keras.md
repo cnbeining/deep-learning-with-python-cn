@@ -54,7 +54,7 @@ pima-indians-diabetes.csv
 
 使用随机梯度下降时最好固定随机数种子，这样你的代码每次运行的结果都一致。这种做法在演示结果、比较算法或debug时特别有效。你可以随便选种子：
 
-```
+```python
 # fix random seed for reproducibility
 seed = 7
 numpy.random.seed(seed)
@@ -62,7 +62,7 @@ numpy.random.seed(seed)
 
 现在导入皮马人数据集。NumPy的```loadtxt()```函数可以直接带入数据，输入变量是8个，输出1个。导入数据后，我们把数据分成输入和输出两组以便交叉检验：
 
-```
+```python
 # load pima indians dataset
 dataset = numpy.loadtxt("pima-indians-diabetes.csv", delimiter=",")
 # split into input (X) and output (Y) variables
@@ -82,7 +82,7 @@ Keras的模型由层构成：我们建立一个```Sequential```模型，一层�
 
 前两层的激活函数是线性整流函数（```relu```），最后一层的激活函数是S型函数（```sigmoid```）。之前大家喜欢用S型和正切函数，但现在线性整流函数效果更好。为了保证输出是0到1的概率数字，最后一层的激活函数是S型函数，这样映射到0.5的阈值函数也容易。前两个隐层分别有12和8个神经元，最后一层是1个神经元（是否有糖尿病）。
 
-```
+```python
 # create model
 model = Sequential()
 model.add(Dense(12, input_dim=8, init='uniform', activation='relu')) model.add(Dense(8, init='uniform', activation='relu')) model.add(Dense(1, init='uniform', activation='sigmoid'))
@@ -104,7 +104,7 @@ model.add(Dense(12, input_dim=8, init='uniform', activation='relu')) model.add(D
 
 网络按轮训练，通过```nb_epoch```参数控制。每次送入的数据（批尺寸）可以用```batch_size```参数控制。这里我们只跑150轮，每次10个数据。多试试就知道了。
 
-```
+```python
 # Fit the model
 model.fit(X, Y, nb_epoch=150, batch_size=10)
 ```
@@ -117,7 +117,7 @@ model.fit(X, Y, nb_epoch=150, batch_size=10)
 
 调用模型的```evaluation()```方法，传入训练时的数据。输出是平均值，包括平均误差和其他的数据，例如准确度。
 
-```
+```python
 # evaluate the model
 scores = model.evaluate(X, Y)
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
@@ -127,7 +127,7 @@ print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
 用Keras做机器学习就是这么简单。我们把代码放在一起：
 
-```
+```python
 # Create first network with Keras
 from keras.models import Sequential
 from keras.layers import Dense
@@ -154,7 +154,7 @@ print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
 训练时每轮会输出一次损失和正确率，以及最终的效果。在我的CPU上用Theano大约跑10秒：
 
-```
+```python
 ...
 Epoch 143/150
 768/768 [==============================] - 0s - loss: 0.4614 - acc: 0.7878
