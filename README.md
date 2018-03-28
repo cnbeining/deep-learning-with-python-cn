@@ -1,10 +1,9 @@
-# 深度学习：Python教程
+# 深度学习：Python 教程 (Deep Learning With Python)
 
 ## Deep Learning With Python: Develop Deep Learning Models on Theano and TensorFlow Using Keras
 
-## 使用Keras、Python、Theano和TensorFlow开发深度学习模型
+## 使用 Keras、Python、Theano 和 TensorFlow 开发深度学习模型
 
-### Jaon Brownlee
+原书网站： https://machinelearningmastery.com/deep-learning-with-python/
 
-### Beining
-
+作者：Jason Brownlee
